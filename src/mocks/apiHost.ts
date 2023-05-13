@@ -1,0 +1,1 @@
+export const mswApiHost = `http://localhost:3000/api`;

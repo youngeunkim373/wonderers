@@ -3,10 +3,61 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { Button, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { mswApiHost } from "@/mocks/apiHost";
+import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [data, setData] = useState<any>([]);
+
+  const getTest = async () => {
+    await axios.get(
+      `${mswApiHost}/test`, {
+      params: {
+        path: "getTest"
+      }})
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const config = {
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true,
+  };
+
+  const postTest = async () => {
+    await axios
+      .post(
+        `${mswApiHost}/test`,
+        JSON.stringify({
+          path: "postTest",
+          id: "1234",
+          name: "lee",
+          country: "ko",
+          lang: "react"
+      }),
+      config
+      )
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getTest();
+  }, []);
+
   return (
     <>
       <Head>
@@ -28,9 +79,13 @@ export default function Home() {
             height={70}
             priority
           />
-          <Button mt="50px" colorScheme="blue">
+          <Button mt="50px" colorScheme="blue" onClick={postTest}>
             Button
           </Button>
+
+          <div>
+            {data[0] && data[0].id}
+          </div>
         </div>
       </main>
     </>
