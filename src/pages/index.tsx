@@ -4,58 +4,29 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { Button, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { mswApiHost } from "@/mocks/apiHost";
-import axios from "axios";
+import { getTestApi, postTestApi } from "@/domain/test/test.service";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  const [data, setData] = useState<any>([]);
+interface Props {
+  data: any[];
+}
 
-  const getTest = async () => {
-    await axios.get(
-      `${mswApiHost}/test`, {
-      params: {
-        path: "getTest"
-      }})
-      .then((res) => {
-        console.log(res.data);
-        setData(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+export default function Home({ data }: Props) {
+  const [testData, setTestData] = useState<any>([]);
 
-  const config = {
-    headers: { "Content-Type": "application/json" },
-    withCredentials: true,
-  };
-
-  const postTest = async () => {
-    await axios
-      .post(
-        `${mswApiHost}/test`,
-        JSON.stringify({
-          path: "postTest",
-          id: "1234",
-          name: "lee",
-          country: "ko",
-          lang: "react"
-      }),
-      config
-      )
-      .then((res) => {
-        console.log(res.data);
-        setData(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const postTest = async() => {
+    const result = await postTestApi({
+      id: "1234",
+      name: "lee",
+      country: "ko",
+      lang: "react"
+    });
+    setTestData(result?.data);
   };
 
   useEffect(() => {
-    getTest();
+    setTestData(data);
   }, []);
 
   return (
@@ -84,10 +55,21 @@ export default function Home() {
           </Button>
 
           <div>
-            {data[0] && data[0].id}
+            {testData[0] && testData[0].id}
           </div>
         </div>
       </main>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const result = await getTestApi();
+  if (result?.status !== 200) return;
+
+  return {
+    props: {
+      data: result.data
+    }
+  };
 }

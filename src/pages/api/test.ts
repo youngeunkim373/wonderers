@@ -1,22 +1,14 @@
-// // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-
-import axios from "axios";
 import { mockedTest } from '@/mocks/data/test';
-
-type Data = {
-  name: string
-}
 
 export default function test(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
   const method: string = req.method!;
-  const path: string = req.query.path || req.body.path;
 
-  switch (path) {
-    case "getTest":
+  switch (method) {
+    case "GET":
       try {
         res.status(200).json(mockedTest);
       } catch (e) {
@@ -26,7 +18,7 @@ export default function test(
           .json({ error: "An error occured while fetching data" });
       }
       break;
-     case "postTest": 
+     case "POST": 
       try {
         const { body } = req;
         const { id, name, country, lang } = body;
