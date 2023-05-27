@@ -1,4 +1,4 @@
-import { Button, Text, Box, Flex, Heading } from "@chakra-ui/react";
+import { Button, Text, Box, Flex } from "@chakra-ui/react";
 import CustomHeading from "@/components/common/CustomHeading";
 
 const guide = () => {
@@ -7,7 +7,7 @@ const guide = () => {
       <Box p="20">
         {/* COLORS */}
         <Box mb="20">
-          <CustomHeading type="h1" mb="5">
+          <CustomHeading as="h1" mb="5">
             COLORS
           </CustomHeading>
           <Flex align="center" justify="center">
@@ -102,18 +102,18 @@ const guide = () => {
 
         {/* FONTS */}
         <Box mb="20">
-          <Heading as="h1">FONTS</Heading>
+          <CustomHeading as="h1">FONTS</CustomHeading>
           {/* <Flex align="center" justify="center"> */}
-          <Heading as="h2" mt="5" mb="3">
+          <CustomHeading as="h2" mt="5" mb="3">
             로고폰트: (영문) 카페24 단정해
-          </Heading>
+          </CustomHeading>
           <Text fontFamily="djh" fontSize="3xl">
             Hellow, we are Wonderes. / fontFamily="djh"{" "}
           </Text>
 
-          <Heading as="h2" mt="5" mb="3">
+          <CustomHeading as="h2" mt="5" mb="3">
             기본폰트: (국문) IBM Plex Sans
-          </Heading>
+          </CustomHeading>
           <Text fontFamily="ibm-EL">
             안녕하세요, 원더러스입니다. / ExtraLight / fontFamily="ibm-EL"
           </Text>
@@ -140,42 +140,45 @@ const guide = () => {
 
         {/* TYPOGRAPHY */}
         <Box mb="20">
-          <Heading as="h1">TYPOGRAPHY</Heading>
-          <Heading as="h2" mt="5" mb="3">
-            body: font-size{" "}
+          <CustomHeading as="h1">TYPOGRAPHY</CustomHeading>
+          <CustomHeading as="h2" color="black.sub" mt="5" mb="0.5">
+            - body: font-size{" "}
             <Text as="span" color="pink.main">
               * 1rem이 되는 기준!
-            </Text>
-          </Heading>
-          <Text mb="5">
+            </Text>{" "}
+            -
+          </CustomHeading>
+          <Text>
             mobile(~768): 16px / tablet(768~1024): 18px / pc(1024~): 20px
           </Text>
 
-          <CustomHeading type="h1">
-            h1 페이지 타이틀 / Medium, 1.4rem / type="h1"
+          <CustomHeading as="h2" color="black.sub" mt="5" mb="0.5">
+            - Contents -
           </CustomHeading>
-          <Heading as="h1">
-            h1 페이지 타이틀 / Medium, 1.4rem / type="h1"
-          </Heading>
-          <CustomHeading type="h2">
+          <CustomHeading as="h4" color="pink.sub">
+            &lt;CustomHeading /&gt;
+          </CustomHeading>
+          <CustomHeading as="h1">
+            h1 페이지 타이틀 / Medium, 1.5rem / type="h1"
+          </CustomHeading>
+          <CustomHeading as="h2">
             h2 콘텐츠 타이틀 / Medium, 1.3rem / type="h2"
           </CustomHeading>
-          <Heading as="h2" size="h2">
-            h2 페이지 타이틀 / Medium, 1.3rem / type="h2"
-          </Heading>
-          <CustomHeading type="h3">
+          <CustomHeading as="h3">
             h3 콘텐츠 타이틀 / Medium, 1.2rem / type="h3"
           </CustomHeading>
-          <Heading as="h3">
-            h3 페이지 타이틀 / Medium, 1.2rem / type="h3"
-          </Heading>
-          <Heading as="h4">
+          <CustomHeading as="h4">
             h4 콘텐츠 타이틀 / Medium, 1.1rem / type="h4"
-          </Heading>
-          <Heading as="h5">h5 콘텐츠 타이틀 / Medium, 1rem / type="h5"</Heading>
-          <Heading as="h6">
+          </CustomHeading>
+          <CustomHeading as="h5">
+            h5 콘텐츠 타이틀 / Medium, 1rem / type="h5"
+          </CustomHeading>
+          <CustomHeading as="h6">
             h6 콘텐츠 타이틀 / Medium, 0.9rem / type="h6"
-          </Heading>
+          </CustomHeading>
+          <CustomHeading as="h4" color="pink.sub" mt="1">
+            &lt;Text /&gt;
+          </CustomHeading>
           <Text>p 콘텐츠 텍스트 / Regular, 0.8rem / default</Text>
           <Text as="span" size="small">
             small 콘텐츠 텍스트 / Regular, 0.7rem / size="small"
@@ -184,12 +187,12 @@ const guide = () => {
 
         {/* BUTTON */}
         <Box mb="20">
-          <Heading as="h1">BUTTON</Heading>
+          <CustomHeading as="h1">BUTTON</CustomHeading>
         </Box>
 
         {/* LABEL & INPUT */}
         <Box mb="20">
-          <Heading as="h1">LABEL & INPUT</Heading>
+          <CustomHeading as="h1">LABEL & INPUT</CustomHeading>
         </Box>
 
         <Button mt="20" colorScheme="pink">

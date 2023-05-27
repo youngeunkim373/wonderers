@@ -1,17 +1,19 @@
 import {
-  Heading as ChakraHeading,
+  Box as ChakraBox,
   HeadingProps as ChakraHeadingProps,
 } from "@chakra-ui/react";
 
 export interface HeadingProps extends ChakraHeadingProps {
-  type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-const CustomHeading = ({ type, children, ...props }: HeadingProps) => {
+const CustomHeading = ({ as, children, ...props }: HeadingProps) => {
   return (
-    <ChakraHeading as={type} textStyle={type} {...props}>
-      {children}
-    </ChakraHeading>
+    <>
+      <ChakraBox as={as} textStyle={as} {...props}>
+        {children}
+      </ChakraBox>
+    </>
   );
 };
 

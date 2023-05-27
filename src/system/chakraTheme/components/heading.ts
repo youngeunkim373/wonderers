@@ -24,7 +24,7 @@ const sizes = {
 };
 
 const Heading = {
-  baseStyle,
+  baseStyle: ``,
   sizes,
   defaultProps: {
     size: "h1",
