@@ -6,22 +6,111 @@ import type {
 const baseStyle: SystemStyleObject = {
   fontWeight: "normal",
   fontFamily: "body",
+  borderRadius: "0.4rem",
 };
 
-const variantGhost: SystemStyleObject = {
-  color: "gray.900",
-  textDecoration: "underline",
-  bg: "transparent",
-  _hover: {
-    bg: "gray.100",
-  },
-  _active: {
-    bg: "gray.100",
-  },
+const variantLink: SystemStyleFunction = (props) => {
+  const { colorScheme: c } = props;
+
+  if (c === "black") {
+    return {
+      color: "black.main",
+    };
+  }
+  if (c === "gray") {
+    return {
+      color: "black.sub",
+    };
+  }
+  if (c === "pink") {
+    return {
+      color: "pink.main",
+    };
+  }
+
+  return {
+    color: "black.main",
+  };
+};
+
+const variantGhost: SystemStyleFunction = (props) => {
+  const { colorScheme: c } = props;
+
+  if (c === "black") {
+    return {
+      color: "black.main",
+      _hover: {
+        bg: "gray.200",
+      },
+    };
+  }
+  if (c === "gray") {
+    return {
+      color: "black.sub",
+    };
+  }
+  if (c === "pink") {
+    return {
+      color: "pink.main",
+    };
+  }
+
+  return {
+    color: "black.main",
+  };
 };
 
 const variantOutline: SystemStyleFunction = (props) => {
   const { colorScheme: c } = props;
+
+  if (c === "black") {
+    return {
+      bg: "white",
+      borderColor: "black.main",
+      color: "black.main",
+      _hover: {
+        bg: "black.main",
+        color: "white",
+        _disabled: {
+          bg: "black.third",
+        },
+      },
+      _active: { bg: "primary-dark" },
+    };
+  }
+
+  if (c === "gray") {
+    return {
+      bg: "white",
+      borderColor: "black.sub",
+      color: "black.sub",
+      _hover: {
+        bg: "black.sub",
+        color: "white",
+        _disabled: {
+          bg: "black.third",
+        },
+      },
+      _active: { bg: "primary-dark" },
+    };
+  }
+
+  if (c === "pink") {
+    return {
+      bg: "white",
+      borderColor: "pink.main",
+      color: "pink.main",
+      _hover: {
+        bg: "pink.main",
+        color: "white",
+        _disabled: {
+          bg: "pink.third",
+        },
+      },
+      _active: { bg: "primary-dark" },
+    };
+  }
+
   return {
     border: "1px solid",
     borderColor: c === "warning" ? "info-increase" : "gray.400",
@@ -39,45 +128,31 @@ const variantOutline: SystemStyleFunction = (props) => {
 const variantSolid: SystemStyleFunction = (props) => {
   const { colorScheme: c } = props;
 
-  if (c === "primary") {
+  if (c === "black-solid") {
     return {
-      bg: "primary",
+      bg: "black",
       color: "white",
       _hover: {
-        bg: "primary-dark",
+        bg: "pink.main",
         _disabled: {
-          bg: "primary",
+          bg: "black.third",
         },
       },
-      _active: { bg: "primary-dark" },
-    };
-  }
-
-  if (c === "black") {
-    return {
-      bg: "gray.900",
-      color: "white",
-      _hover: {
-        bg: "gray.800",
-        _disabled: {
-          bg: "gray.900",
-        },
-      },
-      _active: { bg: "gray.800" },
+      _active: { bg: "pink.main" },
     };
   }
 
   if (c === "gray") {
     return {
-      bg: "gray.300",
-      color: "gray.900",
+      bg: "black.sub",
+      color: "white",
       _hover: {
-        bg: "gray.200",
+        bg: "gray.800",
         _disabled: {
           bg: "gray.300",
         },
       },
-      _active: { bg: "gray.200" },
+      _active: { bg: "gray.800" },
     };
   }
 
@@ -86,33 +161,33 @@ const variantSolid: SystemStyleFunction = (props) => {
       bg: "pink.main",
       color: "white",
       _hover: {
-        bg: "primary-dark",
+        bg: "pink.dark",
         _disabled: {
-          bg: "primary",
+          bg: "gray.300",
         },
       },
-      _active: { bg: "primary-dark" },
+      _active: { bg: "black.main" },
     };
   }
 
   return {
-    bg: "gray.900",
+    bg: "black",
     color: "white",
     _hover: {
-      bg: "gray.800",
+      bg: "pink.main",
       _disabled: {
-        bg: "gray.900",
+        bg: "black.third",
       },
     },
-    _active: { bg: "gray.800" },
+    _active: { bg: "pink.main" },
   };
 };
 
 const variants = {
+  link: variantLink,
   ghost: variantGhost,
   outline: variantOutline,
   solid: variantSolid,
-  link: null,
   unstyled: null,
 };
 
@@ -120,19 +195,20 @@ const sizes: Record<string, SystemStyleObject> = {
   lg: {
     h: 12,
     minW: 12,
-    fontSize: "lg",
-    px: 5,
+    fontSize: "h6",
+    px: 7,
+    py: 5,
   },
   md: {
     h: 10,
     minW: 10,
-    fontSize: "md",
+    fontSize: "p",
     px: 4,
   },
   sm: {
     h: 8,
     minW: 8,
-    fontSize: "sm",
+    fontSize: "small",
     px: 3,
   },
   //xs: null,
@@ -140,8 +216,8 @@ const sizes: Record<string, SystemStyleObject> = {
 
 const defaultProps = {
   variant: "solid",
-  size: "md",
-  colorScheme: "primary",
+  size: "lg",
+  colorScheme: "black",
 };
 
 export default {

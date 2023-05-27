@@ -23,12 +23,24 @@ const sizes = {
   },
 };
 
+const variants = {
+  unstyled: {
+    fontSize: ``,
+    fontFamily: ``,
+  },
+};
+
 const Heading = {
   baseStyle: ``,
   sizes,
   defaultProps: {
     size: "h1",
   },
+  // baseStyle: {
+  //   fontSize: ``,
+  //   fontFamily: ``,
+  // },
+  // variants,
 };
 
 export default Heading;

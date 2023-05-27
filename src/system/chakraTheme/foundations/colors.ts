@@ -3,6 +3,7 @@ const colors = {
     main: "#FF007C",
     sub: "#FF99CB",
     third: "#FFCDE5",
+    dark: "#870041",
   },
 
   black: {

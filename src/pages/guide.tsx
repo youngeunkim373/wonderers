@@ -1,9 +1,19 @@
-import { Button, Text, Box, Flex } from "@chakra-ui/react";
+import { Button, Text, Box, Flex, Heading, Circle } from "@chakra-ui/react";
 import CustomHeading from "@/components/common/CustomHeading";
+import Title from "@/components/common/Title";
 
 const guide = () => {
   return (
     <>
+      <Box p="20">
+        <Box as="h2" textStyle="h2">
+          Box as h1
+        </Box>
+        <Heading as="h2" textStyle="h2">
+          Heading as h1
+        </Heading>
+        <CustomHeading as="h2">CustomHeading as h1</CustomHeading>
+      </Box>
       <Box p="20">
         {/* COLORS */}
         <Box mb="20">
@@ -11,48 +21,21 @@ const guide = () => {
             COLORS
           </CustomHeading>
           <Flex align="center" justify="center">
-            <Flex
-              align="center"
-              justify="center"
-              w="6rem"
-              h="6rem"
-              borderRadius="full"
-              bg="black.main"
-            >
-              <Text color="white" textAlign="center">
-                black.main
-                <br />
-                #000000
-              </Text>
-            </Flex>
-            <Flex
-              align="center"
-              justify="center"
-              w="6rem"
-              h="6rem"
-              borderRadius="full"
-              bg="black.sub"
-            >
-              <Text color="white" textAlign="center">
-                black.sub
-                <br />
-                #909090
-              </Text>
-            </Flex>
-            <Flex
-              align="center"
-              justify="center"
-              w="6rem"
-              h="6rem"
-              borderRadius="full"
-              bg="black.third"
-            >
-              <Text color="black" textAlign="center">
-                black.third
-                <br />
-                #cccccc
-              </Text>
-            </Flex>
+            <Circle size="6rem" bg="black.main" color="white">
+              black.main
+              <br />
+              #000000
+            </Circle>
+            <Circle size="6rem" bg="black.sub" color="white">
+              black.sub
+              <br />
+              #909090
+            </Circle>
+            <Circle size="6rem" bg="black.third" color="black">
+              black.third
+              <br />
+              #cccccc
+            </Circle>
 
             <Flex
               align="center"
@@ -171,10 +154,10 @@ const guide = () => {
             h4 콘텐츠 타이틀 / Medium, 1.1rem / type="h4"
           </CustomHeading>
           <CustomHeading as="h5">
-            h5 콘텐츠 타이틀 / Medium, 1rem / type="h5"
+            h5 콘텐츠 타이틀 / Regular, 1rem / type="h5"
           </CustomHeading>
           <CustomHeading as="h6">
-            h6 콘텐츠 타이틀 / Medium, 0.9rem / type="h6"
+            h6 콘텐츠 타이틀 / Regular, 0.9rem / type="h6"
           </CustomHeading>
           <CustomHeading as="h4" color="pink.sub" mt="1">
             &lt;Text /&gt;
@@ -183,11 +166,90 @@ const guide = () => {
           <Text as="span" size="small">
             small 콘텐츠 텍스트 / Regular, 0.7rem / size="small"
           </Text>
+
+          <CustomHeading as="h2" color="black.sub" mt="5" mb="0.5">
+            - Page Title -
+          </CustomHeading>
+          <Flex align="flex-start" mt="5">
+            <Title title="페이지 타이틀" subTitle="" />
+            <Title title="페이지 타이틀" subTitle="서브 타이틀입니다." />
+          </Flex>
         </Box>
 
         {/* BUTTON */}
         <Box mb="20">
           <CustomHeading as="h1">BUTTON</CustomHeading>
+
+          <CustomHeading as="h2" color="black.sub" mt="5" mb="0.5">
+            - Size -
+          </CustomHeading>
+          <Flex flexWrap="wrap" justify="flex-start" gap="5">
+            <Button>lg(default)</Button>
+            <Button colorScheme="gray">lg(default)</Button>
+            <Button colorScheme="pink">lg(default)</Button>
+          </Flex>
+          <Flex mt="5" flexWrap="wrap" justify="flex-start" gap="5">
+            <Button size="md">size="md"</Button>
+            <Button size="md" colorScheme="gray">
+              size="md"
+            </Button>
+            <Button size="md" colorScheme="pink">
+              size="md"
+            </Button>
+          </Flex>
+          <Flex mt="5" flexWrap="wrap" justify="flex-start" gap="5">
+            <Button size="sm">size="sm"</Button>
+            <Button size="sm" colorScheme="gray">
+              size="sm"
+            </Button>
+            <Button size="sm" colorScheme="pink">
+              size="sm"
+            </Button>
+          </Flex>
+          <br />
+
+          <CustomHeading as="h2" color="black.sub" mt="5" mb="0.5">
+            - Color -
+          </CustomHeading>
+          <Flex flexWrap="wrap" justify="flex-start" gap="5">
+            <Button>black(default)</Button>
+            <Button colorScheme="gray">colorScheme="gray"</Button>
+            <Button colorScheme="pink">colorScheme="pink"</Button>
+          </Flex>
+
+          <CustomHeading as="h2" color="black.sub" mt="5" mb="0.5">
+            - Variant -
+          </CustomHeading>
+          <Flex flexWrap="wrap" justify="flex-start" gap="5">
+            <Button>solid(default)</Button>
+            <Button variant="outline">variant="outline"</Button>
+            <Button variant="ghost">variant="ghost"</Button>
+            <Button variant="link">variant="link"</Button>
+          </Flex>
+          <Flex mt="5" flexWrap="wrap" justify="flex-start" gap="5">
+            <Button colorScheme="gray">solid(default)</Button>
+            <Button colorScheme="gray" variant="outline">
+              variant="outline"
+            </Button>
+            <Button colorScheme="gray" variant="ghost">
+              variant="ghost"
+            </Button>
+            <Button colorScheme="gray" variant="link">
+              variant="link"
+            </Button>
+          </Flex>
+          <Flex mt="5" flexWrap="wrap" justify="flex-start" gap="5">
+            <Button colorScheme="pink">solid(default)</Button>
+            <Button colorScheme="pink" variant="outline">
+              variant="outline"
+            </Button>
+            <Button colorScheme="pink" variant="ghost">
+              variant="ghost"
+            </Button>
+            <Button colorScheme="pink" variant="link">
+              variant="link"
+            </Button>
+          </Flex>
         </Box>
 
         {/* LABEL & INPUT */}

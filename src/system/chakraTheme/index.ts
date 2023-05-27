@@ -27,15 +27,15 @@ const overrides = {
     },
     h4: {
       fontSize: "1.1rem",
-      fontFamily: "ibm-M",
+      fontFamily: "ibm-R",
     },
     h5: {
       fontSize: "1.0rem",
-      fontFamily: "ibm-M",
+      fontFamily: "ibm-R",
     },
     h6: {
       fontSize: "0.9rem",
-      fontFamily: "ibm-M",
+      fontFamily: "ibm-R",
     },
     subTit: {
       color: "black.sub",

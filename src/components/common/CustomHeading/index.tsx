@@ -1,6 +1,7 @@
 import {
   Box as ChakraBox,
   HeadingProps as ChakraHeadingProps,
+  // Heading,
 } from "@chakra-ui/react";
 
 export interface HeadingProps extends ChakraHeadingProps {
