@@ -13,14 +13,15 @@ interface Props {
 }
 
 export default function Home({ data }: Props) {
+  console.log(data);
   const [testData, setTestData] = useState<any>([]);
 
-  const postTest = async() => {
+  const postTest = async () => {
     const result = await postTestApi({
       id: "1234",
       name: "lee",
       country: "ko",
-      lang: "react"
+      lang: "react",
     });
     setTestData(result?.data);
   };
@@ -54,9 +55,7 @@ export default function Home({ data }: Props) {
             Button
           </Button>
 
-          <div>
-            {testData[0] && testData[0].id}
-          </div>
+          <div>{testData[0] && testData[0].id}</div>
         </div>
       </main>
     </>
@@ -69,7 +68,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      data: result.data
-    }
+      data: result.data,
+    },
   };
 }
