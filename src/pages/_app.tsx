@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
+import customTheme from "../system/chakraTheme";
 
 // if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
 import("../mocks");
@@ -8,7 +9,7 @@ import("../mocks");
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={customTheme}>
       <Component {...pageProps} />
     </ChakraProvider>
   );
