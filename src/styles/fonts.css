@@ -8,44 +8,43 @@
 
 /* 국문 - IBM Plex Sans */
 @font-face {
-  font-family: 'ibm-Bold';
-  src: url('/font/IBMPlexSansKR-Bold.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'ibm-ExtraLight';
+  font-family: 'ibm-EL';
   src: url('/font/IBMPlexSansKR-ExtraLight.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ibm-Light';
+  font-family: 'ibm-L';
   src: url('/font/IBMPlexSansKR-Light.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ibm-Medium';
+  font-family: 'ibm-M';
   src: url('/font/IBMPlexSansKR-Medium.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ibm-Regular';
+  font-family: 'ibm-R';
   src: url('/font/IBMPlexSansKR-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ibm-SemiBold';
+  font-family: 'ibm-SB';
   src: url('/font/IBMPlexSansKR-SemiBold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ibm-Text';
+  font-family: 'ibm-B';
+  src: url('/font/IBMPlexSansKR-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ibm-T';
   src: url('/font/IBMPlexSansKR-Text.woff') format('woff');
   font-weight: normal;
   font-style: normal;

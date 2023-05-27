@@ -13,7 +13,6 @@ interface Props {
 }
 
 export default function Home({ data }: Props) {
-  console.log(data);
   const [testData, setTestData] = useState<any>([]);
 
   const postTest = async () => {
