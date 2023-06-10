@@ -6,7 +6,9 @@
     "dev": "next dev -p 7737",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.5.5",
@@ -26,7 +28,16 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "msw": "^1.2.1"
+    "@storybook/addon-essentials": "^7.0.20",
+    "@storybook/addon-interactions": "^7.0.20",
+    "@storybook/addon-links": "^7.0.20",
+    "@storybook/blocks": "^7.0.20",
+    "@storybook/nextjs": "^7.0.20",
+    "@storybook/react": "^7.0.20",
+    "@storybook/testing-library": "^0.0.14-next.2",
+    "eslint-plugin-storybook": "^0.6.12",
+    "msw": "^1.2.1",
+    "storybook": "^7.0.20"
   },
   "msw": {
     "workerDirectory": "public"
