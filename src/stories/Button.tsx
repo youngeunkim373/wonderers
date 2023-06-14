@@ -1,52 +1,23 @@
-import React from 'react';
-import './button.css';
+import { Button } from "@chakra-ui/react";
 
 interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
-  label: string;
-  /**
-   * Optional click handler
-   */
+  children?: React.ReactNode;
+  /** Use the size prop to change the size of the button. */
+  size?: "sm" | "md" | "lg";
+  /** What background color to use */
+  colorScheme?: "black" | "gray" | "pink";
+  /** What background color to use */
+  variant: "solid" | "outline" | "ghost" | "link";
   onClick?: () => void;
 }
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
+/** Primary UI component for user interaction */
+export const ChakraButton = ({
+  children,
+  // size = "md",
+  // colorScheme = "black",
+  // variant = "solid",
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-  return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      {...props}
-    >
-      {label}
-      <style jsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
-    </button>
-  );
+  return <Button {...props}>{children}</Button>;
 };

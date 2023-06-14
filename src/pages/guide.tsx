@@ -5,7 +5,6 @@ import {
   Text,
   Box,
   Flex,
-  Heading,
   Circle,
   Input,
   InputGroup,
