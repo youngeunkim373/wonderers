@@ -1,19 +1,37 @@
-import { Button, Text, Box, Flex, Heading, Circle } from "@chakra-ui/react";
+import { useState } from "react";
+import {
+  Button,
+  IconButton,
+  Text,
+  Box,
+  Flex,
+  Heading,
+  Circle,
+  Input,
+  InputGroup,
+  InputRightElement,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Select,
+} from "@chakra-ui/react";
+import { ViewOffIcon, ViewIcon } from "@chakra-ui/icons";
 import CustomHeading from "@/components/common/CustomHeading";
 import Title from "@/components/common/Title";
 
 const guide = () => {
+  const [input, setInput] = useState("");
+  const [show, setShow] = useState(false);
+
+  const handleInputChange = (event) => setInput(event.target.value);
+
+  const isError = input === "";
+
+  const handleClick = () => setShow(!show);
+
   return (
     <>
-      <Box p="20">
-        <Box as="h2" textStyle="h2">
-          Box as h1
-        </Box>
-        <Heading as="h2" textStyle="h2">
-          Heading as h1
-        </Heading>
-        <CustomHeading as="h2">CustomHeading as h1</CustomHeading>
-      </Box>
       <Box p="20">
         {/* COLORS */}
         <Box mb="20">
@@ -184,17 +202,21 @@ const guide = () => {
             - Size -
           </CustomHeading>
           <Flex flexWrap="wrap" justify="flex-start" gap="5">
-            <Button>lg(default)</Button>
-            <Button colorScheme="gray">lg(default)</Button>
-            <Button colorScheme="pink">lg(default)</Button>
+            <Button size="lg">size="lg"</Button>
+            <Button size="lg" colorScheme="gray">
+              size="lg"
+            </Button>
+            <Button size="lg" colorScheme="pink">
+              size="lg"
+            </Button>
           </Flex>
           <Flex mt="5" flexWrap="wrap" justify="flex-start" gap="5">
-            <Button size="md">size="md"</Button>
+            <Button size="md">size="md"(default)</Button>
             <Button size="md" colorScheme="gray">
-              size="md"
+              size="md"(default)
             </Button>
             <Button size="md" colorScheme="pink">
-              size="md"
+              size="md"(default)
             </Button>
           </Flex>
           <Flex mt="5" flexWrap="wrap" justify="flex-start" gap="5">
@@ -254,15 +276,72 @@ const guide = () => {
 
         {/* LABEL & INPUT */}
         <Box mb="20">
-          <CustomHeading as="h1">LABEL & INPUT</CustomHeading>
-        </Box>
+          <CustomHeading as="h1">Form Control</CustomHeading>
 
-        <Button mt="20" colorScheme="pink">
-          Button Test
-        </Button>
-        {/* <Button mt="20">Button Test</Button> */}
-        <Box bg="pink.main">Box Test</Box>
-        <Text color="pink.main">Text test</Text>
+          <CustomHeading as="h2" color="black.sub" mt="5" mb="0.5">
+            - LABEL & INPUT -
+          </CustomHeading>
+
+          <FormControl mt="5">
+            <FormLabel>아이디</FormLabel>
+            <Flex>
+              <Input type="text" placeholder="아이디를 입력해 주세요." />
+              <Button ml="2" size="md" colorScheme="pink">
+                중복 체크
+              </Button>
+            </Flex>
+          </FormControl>
+
+          <FormControl isRequired mt="10">
+            <FormLabel>이메일 주소</FormLabel>
+            <Input type="email" placeholder="이메일 주소를 입력해 주세요." />
+          </FormControl>
+
+          <FormControl isInvalid={isError} mt="10" isRequired>
+            <FormLabel>이메일 주소</FormLabel>
+            <Input type="email" value={input} onChange={handleInputChange} />
+            {!isError ? (
+              <FormHelperText>이메일 주소를 입력해 주세요.</FormHelperText>
+            ) : (
+              <FormErrorMessage>
+                이메일 주소는 반드시 입력하셔야 합니다.
+              </FormErrorMessage>
+            )}
+          </FormControl>
+
+          <FormControl isRequired mt="10">
+            <FormLabel>비밀번호</FormLabel>
+            <InputGroup size="md">
+              <Input
+                type={show ? "text" : "password"}
+                placeholder="Enter password"
+              />
+              <InputRightElement width="4.5rem">
+                <IconButton
+                  aria-label={show ? "hide" : "show"}
+                  h="1.75rem"
+                  size="sm"
+                  onClick={handleClick}
+                  icon={show ? <ViewOffIcon /> : <ViewIcon />}
+                />
+              </InputRightElement>
+            </InputGroup>
+            <FormHelperText color="pink.main">
+              영어 대소문자, 숫자, 특수문자 포함 최소 8자리 이상
+            </FormHelperText>
+          </FormControl>
+
+          <CustomHeading as="h2" color="black.sub" mt="10" mb="5">
+            - Select -
+          </CustomHeading>
+          <FormControl>
+            <FormLabel>Country</FormLabel>
+            <Select placeholder="Select country">
+              <option>United Arab Emirates</option>
+              <option>Nigeria</option>
+            </Select>
+          </FormControl>
+        </Box>
       </Box>
     </>
   );

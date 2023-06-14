@@ -44,18 +44,16 @@ const typography = {
     // web size 기준
     "2xs": "0.55rem", // 11px
     xs: "0.6rem", // 12px
-    sm: "0.65rem", // 13px
-    md: "0.7rem", // 14px (small)
-    lg: "0.75rem", // 15px
-    xl: "0.8rem", // 16px (p)
-    "2xl": "0.9rem", // 18px (h6)
-    "3xl": "1rem", // 20px (h5)
-    "4xl": "1.1rem", // 22px (h4)
-    "5xl": "1.2rem", // 24px (h3)
-    "6xl": "1.3rem", // 26px (h2)
-    "7xl": "1.4rem", // 28px (h1)
-    "8xl": "1.5rem", // 30px
-    "9xl": "1.6rem", // 32px
+    sm: "0.7rem", // 14px (small)
+    md: "0.8rem", // 16px (p)
+    lg: "0.9rem", // 18px (h6)
+    xl: "1rem", // 20px (h5)
+    "2xl": "1.1rem", // 22px (h4)
+    "3xl": "1.2rem", // 24px (h3)
+    "4xl": "1.3rem", // 26px (h2)
+    "5xl": "1.4rem", // 28px (h1)
+    "6xl": "1.5rem", // 30px
+    "7xl": "1.6rem", // 32px
 
     // Title: type, Text: size
     small: "0.7rem", // 14px (small)
