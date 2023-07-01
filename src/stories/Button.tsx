@@ -1,9 +1,5 @@
 import { Button } from "@chakra-ui/react";
 
-interface Button {
-  children?: React.ReactNode;
-}
-
 interface ButtonProps {
   children?: React.ReactNode;
   /** Use the size prop to change the size of the button. */
