@@ -216,7 +216,7 @@ const sizes: Record<string, SystemStyleObject> = {
 
 const defaultProps = {
   variant: "solid",
-  size: "lg",
+  size: "md",
   colorScheme: "black",
 };
 
