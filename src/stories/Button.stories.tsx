@@ -4,32 +4,24 @@ import { ChakraButton as Button } from "./Button";
 // import { Button } from "@chakra-ui/react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
+// ref) https://storybook.js.org/blog/improved-type-safety-in-storybook-7/
+// const meta = {
+//   title: "Example/Button",
+//   component: Button,
+//   tags: ["autodocs"],
+// } satisfies Meta<typeof Button>;
+
 const meta: Meta<typeof Button> = {
   title: "Example/Button",
   component: Button,
   tags: ["autodocs"],
-  // argTypes: {
-  //   size: {
-  //     control: "radio",
-  //     options: ["lg", "md", "sm", "xs"],
-  //     description: "xs는 쓰지마시오",
-  //     default: "md",
-  //   },
-  //   children: {
-  //     control: "text",
-  //   },
-  // },
-  // args: {
-  //   size: "md",
-  //   children: "button",
-  // },
 };
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default: Story = {
+export const Basic: Story = {
   args: {
     variant: "solid",
     size: "md",
@@ -38,17 +30,14 @@ export const Default: Story = {
   },
 };
 
-export const Size: Story = {
-  args: {
-    size: "lg",
-    children: "size",
-  },
-};
+// export const Size: Story<typeof Button> = () => <Button>size</Button>;
 
-// export const Size: Story = {
-//   args: {
-//     size: "lg",
-//     children: "size",
-//   },
-//   render: () => <Button></Button>,
-// };
+export const Size: Story = {
+  // args: {
+  //   variant: "solid",
+  //   size: "md",
+  //   colorScheme: "black",
+  //   children: "Default Button",
+  // },
+  render: () => <Button variant="solid">??</Button>,
+};
