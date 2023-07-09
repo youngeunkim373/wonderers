@@ -9,6 +9,7 @@ interface HeadingProps {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   /**  */
   children?: React.ReactNode;
+  lineHeight?: string;
 }
 
 /** Primary UI component for user interaction */

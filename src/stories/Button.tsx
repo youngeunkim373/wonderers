@@ -6,14 +6,12 @@ interface Button {
 
 interface ButtonProps {
   /**  */
-  children?: React.ReactNode;
-  /**  */
+  children: React.ReactNode;
   size?: "sm" | "md" | "lg";
-  /**  */
   colorScheme?: "black" | "gray" | "pink";
-  /**  */
   variant?: "solid" | "outline" | "ghost" | "link";
-  /**  */
+  /**  w = width */
+  w?: "auto" | "100%";
   onClick?: () => void;
 }
 

@@ -67,3 +67,11 @@ export const Variant: Story = {
     </Flex>
   ),
 };
+
+export const WidthFull: Story = {
+  render: () => (
+    <>
+      <Button w="100%">w: 100%</Button>
+    </>
+  ),
+};

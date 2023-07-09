@@ -17,6 +17,13 @@ interface TextProps {
   as?: "p" | "span";
   size?: "p" | "small";
   children?: React.ReactNode;
+  color?:
+    | "black.main"
+    | "black.sub"
+    | "black.third"
+    | "pink.main"
+    | "pink.sub"
+    | "pink.third";
 }
 
 /** Primary UI component for user interaction */

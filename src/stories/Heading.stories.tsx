@@ -7,6 +7,14 @@ const meta: Meta<typeof Heading> = {
   title: "Example/Heading",
   component: Heading,
   tags: ["autodocs"],
+  argTypes: {
+    as: {
+      // description: "필요할 경우에만 사용",
+      table: {
+        defaultValue: { summary: "h1" },
+      },
+    },
+  },
 };
 
 export default meta;

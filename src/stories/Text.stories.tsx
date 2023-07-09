@@ -26,6 +26,11 @@ const meta: Meta<typeof Text> = {
         defaultValue: { summary: "p" },
       },
     },
+    color: {
+      table: {
+        defaultValue: { summary: "black.main" },
+      },
+    },
   },
 };
 
@@ -50,6 +55,19 @@ export const FontFamily: Story = {
       <Text fontFamily="ibm-SB">fontFamily: ibm-SB</Text>
       <Text fontFamily="ibm-B">fontFamily: ibm-B</Text>
       <Text fontFamily="djh">fontFamily: djh(Eng only)</Text>
+    </Box>
+  ),
+};
+
+export const Color: Story = {
+  render: () => (
+    <Box>
+      <Text color="black.main">color: black.main</Text>
+      <Text color="black.sub">color: black.sub</Text>
+      <Text color="black.third">color: black.third</Text>
+      <Text color="pink.main">color: pink.main</Text>
+      <Text color="pink.sub">color: pink.sub</Text>
+      <Text color="pink.third">color: pink.third</Text>
     </Box>
   ),
 };
