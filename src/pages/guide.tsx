@@ -55,49 +55,21 @@ const Guide = () => {
               #cccccc
             </Circle>
 
-            <Flex
-              align="center"
-              justify="center"
-              w="6rem"
-              h="6rem"
-              ml="20px"
-              borderRadius="full"
-              bg="pink.main"
-            >
-              <Text color="white" textAlign="center">
-                pink.main
-                <br />
-                #FF007C
-              </Text>
-            </Flex>
-            <Flex
-              align="center"
-              justify="center"
-              w="6rem"
-              h="6rem"
-              borderRadius="full"
-              bg="pink.sub"
-            >
-              <Text color="white" textAlign="center">
-                pink.sub
-                <br />
-                #FF99CB
-              </Text>
-            </Flex>
-            <Flex
-              align="center"
-              justify="center"
-              w="6rem"
-              h="6rem"
-              borderRadius="full"
-              bg="pink.third"
-            >
-              <Text color="black" textAlign="center">
-                pink.third
-                <br />
-                #FFCDE5
-              </Text>
-            </Flex>
+            <Circle size="6rem" bg="pink.main" color="white" ml="5">
+              pink.main
+              <br />
+              #FF007C
+            </Circle>
+            <Circle size="6rem" bg="pink.sub" color="white">
+              pink.sub
+              <br />
+              #FF99CB
+            </Circle>
+            <Circle size="6rem" bg="pink.third" color="black">
+              pink.third
+              <br />
+              #FFCDE5
+            </Circle>
           </Flex>
         </Box>
 

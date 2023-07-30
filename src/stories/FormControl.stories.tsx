@@ -21,6 +21,7 @@ const meta: Meta<typeof FormControl> = {
   tags: ["autodocs"],
   argTypes: {
     isRequired: {
+      options: ["true", "false"],
       table: {
         defaultValue: { summary: "false" },
       },
@@ -39,6 +40,15 @@ export const Default = () => {
     <FormControl>
       <FormLabel>레이블</FormLabel>
       <Input type="text" placeholder="값을 입력해 주세요." />
+    </FormControl>
+  );
+};
+
+export const Readonly = () => {
+  return (
+    <FormControl isReadOnly>
+      <FormLabel>레이블</FormLabel>
+      <Input type="text" placeholder="수정할 수 없는 값입니다." />
     </FormControl>
   );
 };
@@ -107,22 +117,10 @@ export const PasswordShowHide = () => {
           />
         </InputRightElement>
       </InputGroup>
-      <FormHelperText color="pink.main">
+      <FormHelperText>
         영어 대소문자, 숫자, 특수문자 포함 최소 8자리 이상
       </FormHelperText>
     </FormControl>
   );
 };
 PasswordShowHide.storyName = "Password Show/Hide";
-
-export const SelectControl = () => {
-  return (
-    <FormControl>
-      <FormLabel>셀렉트</FormLabel>
-      <Select placeholder="옵션을 선택해 주세요.">
-        <option>옵션 1</option>
-        <option>옵션 2</option>
-      </Select>
-    </FormControl>
-  );
-};

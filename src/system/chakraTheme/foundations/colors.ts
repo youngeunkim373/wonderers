@@ -12,6 +12,12 @@ const colors = {
     third: "#cccccc",
   },
 
+  blue: {
+    main: "#217ddd",
+    sub: "#00AEF9",
+    third: "#51D5FF",
+  },
+
   gray: {
     50: "#FAFAFA",
     100: "#F5F5F5",
