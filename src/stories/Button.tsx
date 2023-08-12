@@ -1,27 +1,21 @@
-import { Button } from "@chakra-ui/react";
+import { Button, ButtonProps } from "@chakra-ui/react";
 
-interface Button {
+interface button {
   children?: React.ReactNode;
 }
 
-interface ButtonProps {
-  children?: React.ReactNode;
-  /** Use the size prop to change the size of the button. */
+interface buttonProps extends ButtonProps {
+  /**  */
+  children: React.ReactNode;
   size?: "sm" | "md" | "lg";
-  /** What background color to use */
   colorScheme?: "black" | "gray" | "pink";
-  /** What background color to use */
-  variant: "solid" | "outline" | "ghost" | "link";
+  variant?: "solid" | "outline" | "ghost" | "link";
+  /**  w = width */
+  w?: "auto" | "100%";
   onClick?: () => void;
 }
 
 /** Primary UI component for user interaction */
-export const ChakraButton = ({
-  children,
-  // size = "md",
-  // colorScheme = "black",
-  // variant = "solid",
-  ...props
-}: ButtonProps) => {
+export const button = ({ children, ...props }: buttonProps) => {
   return <Button {...props}>{children}</Button>;
 };
