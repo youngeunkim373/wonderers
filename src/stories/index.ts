@@ -10,14 +10,6 @@ import {
   formInputInvalid,
   formInputPassword,
 } from "./FormInput";
-// import { Text } from "./Text";
-// import Textarea from "./textarea";
-// import Form from "./form-control";
-// import FormError from "./form-error";
-// import Select from "./select";
-// import Checkbox from "./checkbox";
-// import Radio from "./radio";
-// import Switch from "./switch";
 
 export const Button = button;
 export const Label = label;
