@@ -42,7 +42,7 @@ interface CustomButtonProps extends ButtonProps {
   };
 }
 
-export const formInput = ({
+export const FormControlInput = ({
   inputProps,
   ...props
 }: CustomFormControlProps & CustomInputProps) => {
@@ -54,7 +54,7 @@ export const formInput = ({
   );
 };
 
-export const formInputWithButton = ({
+export const FormControlInputWithButton = ({
   inputProps,
   buttonProps,
   ...props
@@ -77,7 +77,7 @@ export const formInputWithButton = ({
   );
 };
 
-export const formInputInvalid = ({
+export const FormControlInputInvalid = ({
   inputProps,
   ...props
 }: CustomFormControlProps & CustomInputProps) => {
@@ -102,7 +102,7 @@ export const formInputInvalid = ({
   );
 };
 
-export const formInputPassword = ({
+export const FormControlInputPassword = ({
   inputProps,
   ...props
 }: CustomFormControlProps & CustomInputProps) => {
