@@ -1,5 +1,5 @@
 import { Box, Image } from "@chakra-ui/react";
-import { Heading } from "./Heading";
+import { Heading } from "./";
 
 interface Box {
   children?: React.ReactNode;
@@ -14,7 +14,7 @@ interface PageTitleProps {
 }
 
 /** Primary UI component for user interaction */
-export const PageTitle = ({ ...props }: PageTitleProps) => {
+export const pageTitle = ({ ...props }: PageTitleProps) => {
   const { subtitle } = props;
 
   return (

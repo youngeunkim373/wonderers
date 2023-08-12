@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { PageTitle } from "./PageTitle";
+import { PageTitle } from "./";
 
 const meta: Meta<typeof PageTitle> = {
   title: "Example/PageTitle",
@@ -20,12 +20,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default: Story = {
+export const DefaultPageTitle: Story = {
   args: {
     title: "The page title.",
     subtitle: "This is an area for subtitles.",
   },
 };
+DefaultPageTitle.storyName = "Default";
 
 export const NoSubtitle: Story = {
   args: {

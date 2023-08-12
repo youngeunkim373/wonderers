@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Heading } from "./Heading";
+import { Heading } from "./";
 import { Box } from "@chakra-ui/react";
 
 const meta: Meta<typeof Heading> = {

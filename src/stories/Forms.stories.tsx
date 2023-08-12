@@ -3,8 +3,6 @@ import {
   Checkbox,
   CheckboxGroup,
   FormControl,
-  FormLabel,
-  Input,
   Radio,
   RadioGroup,
   Stack,
@@ -13,35 +11,37 @@ import {
 } from "@chakra-ui/react";
 import { Select } from "./Select";
 import { useState } from "react";
+import { Label, Input } from ".";
+// import { ChakraInput } from "./Input";
 
+/** Use Chakra UI Components */
 const meta: Meta<typeof FormControl> = {
   title: "Example/Forms",
   component: FormControl,
   tags: ["autodocs"],
-  argTypes: {
-    isRequired: {
-      options: ["true", "false"],
-      table: {
-        defaultValue: { summary: "false" },
-      },
-    },
-    isError: {
-      table: {
-        defaultValue: { summary: "false" },
-      },
-    },
-  },
+  // argTypes: {
+  //   isRequired: {
+  //     options: ["true", "false"],
+  //     table: {
+  //       defaultValue: { summary: "false" },
+  //     },
+  //   },
+  //   isError: {
+  //     table: {
+  //       defaultValue: { summary: "false" },
+  //     },
+  //   },
+  // },
 };
 export default meta;
 
-export const Default = () => {
-  return <Input type="text" placeholder="값을 입력해 주세요." />;
-};
-Default.storyName = "Input";
+// export const LabelStory = () => {
+//   return <Label>레이블</Label>;
+// };
 
-export const Label = () => {
-  return <FormLabel>레이블</FormLabel>;
-};
+// export const InputStory = () => {
+//   return <Input type="text" placeholder="test" />;
+// };
 
 export const SelectStory = () => {
   return (
@@ -54,7 +54,6 @@ export const SelectStory = () => {
     </Select>
   );
 };
-SelectStory.storyName = "Select";
 
 export const CheckboxStory = () => {
   return (
@@ -67,7 +66,6 @@ export const CheckboxStory = () => {
     </CheckboxGroup>
   );
 };
-CheckboxStory.storyName = "Checkbox";
 
 export const RadioStory = () => {
   const [value, setValue] = useState("1");
@@ -84,21 +82,18 @@ export const RadioStory = () => {
     </RadioGroup>
   );
 };
-RadioStory.storyName = "Radio";
 
 export const SwitchStory = () => {
   return (
     <FormControl display="flex" alignItems="center">
-      <FormLabel htmlFor="email-alerts" mb="0">
+      <Label htmlFor="email-alerts" mb="0">
         Enable email alerts?
-      </FormLabel>
+      </Label>
       <Switch id="email-alerts" size="md" />
     </FormControl>
   );
 };
-SwitchStory.storyName = "Switch";
 
 export const TextareaStory = () => {
   return <Textarea placeholder="Here is a sample placeholder" />;
 };
-TextareaStory.storyName = "Textarea";

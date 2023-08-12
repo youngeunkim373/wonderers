@@ -1,10 +1,10 @@
-import { Button as ChakraButton } from "@chakra-ui/react";
+import { Button, ButtonProps } from "@chakra-ui/react";
 
-interface Button {
+interface button {
   children?: React.ReactNode;
 }
 
-interface ButtonProps {
+interface buttonProps extends ButtonProps {
   /**  */
   children: React.ReactNode;
   size?: "sm" | "md" | "lg";
@@ -16,6 +16,6 @@ interface ButtonProps {
 }
 
 /** Primary UI component for user interaction */
-export const Button = ({ children, ...props }: ButtonProps) => {
-  return <ChakraButton {...props}>{children}</ChakraButton>;
+export const button = ({ children, ...props }: buttonProps) => {
+  return <Button {...props}>{children}</Button>;
 };

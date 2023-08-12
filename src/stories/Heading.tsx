@@ -13,7 +13,7 @@ interface HeadingProps {
 }
 
 /** Primary UI component for user interaction */
-export const Heading = ({ as, children, ...props }: HeadingProps) => {
+export const heading = ({ as, children, ...props }: HeadingProps) => {
   return (
     <Box as={as} textStyle={as} {...props}>
       {children}
