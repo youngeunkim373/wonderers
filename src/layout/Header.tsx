@@ -1,7 +1,8 @@
 import { Flex, useDisclosure } from '@chakra-ui/react';
 
 import { LogoLink } from '../components/common/links/LogoLink';
-import { ContentCatrgories } from './components/ContentCategories';
+import { WebCatrgories } from './components/ContentCategories';
+import { DrawerNav } from './components/DrawerNav';
 import { Hamburger } from './components/Hamburger';
 
 export function Header() {
@@ -18,6 +19,11 @@ export function Header() {
       <Hamburger
         w={'33px'}
         onOpen={onOpen}
+      />
+
+      <DrawerNav
+        isOpen={isOpen}
+        onClose={onClose}
       />
     </Flex>
   );
