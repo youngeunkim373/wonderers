@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "@chakra-ui/react";
+import { Button, ButtonProps } from '@chakra-ui/react';
 
 interface button {
   children?: React.ReactNode;
@@ -6,13 +6,11 @@ interface button {
 
 interface CustomButtonProps extends ButtonProps {
   /**  */
-  children: React.ReactNode;
-  size?: "sm" | "md" | "lg";
-  colorScheme?: "black" | "gray" | "pink";
-  variant?: "solid" | "outline" | "ghost" | "link";
+  size?: 'sm' | 'md' | 'lg';
+  colorScheme?: 'black' | 'gray' | 'pink';
+  variant?: 'solid' | 'outline' | 'ghost' | 'link';
   /**  w = width */
-  w?: "auto" | "100%";
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  w?: 'auto' | '100%';
 }
 
 /** Primary UI component for user interaction */
