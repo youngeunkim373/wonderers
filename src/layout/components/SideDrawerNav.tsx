@@ -22,7 +22,7 @@ const headerStyle = {
   textAlign: 'center' as const,
 };
 
-export function DrawerNav({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+export function SideDrawerNav({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   return (
     <Drawer
       placement={'right'}
