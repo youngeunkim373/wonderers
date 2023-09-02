@@ -1,8 +1,9 @@
-const UNKNOWN_DATA = 'UNKNOWN';
+const UNKNOWN_DATA = "UNKNOWN";
 
 export const mockedTest: any[] = Array(3).fill({
-    id: "123",
-    name: "lee",
-    country: "ko",
-    lang: "react"
+  id: "user",
+  pw: "1234",
+  name: "lee",
+  country: "ko",
+  lang: "react",
 });

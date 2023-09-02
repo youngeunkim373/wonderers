@@ -4,7 +4,7 @@ interface button {
   children?: React.ReactNode;
 }
 
-interface buttonProps extends ButtonProps {
+interface CustomButtonProps extends ButtonProps {
   /**  */
   children: React.ReactNode;
   size?: "sm" | "md" | "lg";
@@ -12,10 +12,10 @@ interface buttonProps extends ButtonProps {
   variant?: "solid" | "outline" | "ghost" | "link";
   /**  w = width */
   w?: "auto" | "100%";
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 /** Primary UI component for user interaction */
-export const button = ({ children, ...props }: buttonProps) => {
+export const button = ({ children, ...props }: CustomButtonProps) => {
   return <Button {...props}>{children}</Button>;
 };

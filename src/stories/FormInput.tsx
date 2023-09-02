@@ -30,7 +30,7 @@ interface CustomInputProps extends InputProps {
     type?: string;
     value?: string;
     placeholder?: string;
-    onChange?: () => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   };
 }
 
@@ -38,7 +38,7 @@ interface CustomButtonProps extends ButtonProps {
   buttonProps: {
     name: string;
     colorScheme?: string;
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   };
 }
 
@@ -47,7 +47,7 @@ export const FormControlInput = ({
   ...props
 }: CustomFormControlProps & CustomInputProps) => {
   return (
-    <FormControl {...props}>
+    <FormControl {...props} mt="5">
       {props.label !== "" && <Label>{props.label}</Label>}
       <Input {...inputProps} />
     </FormControl>
@@ -60,7 +60,7 @@ export const FormControlInputWithButton = ({
   ...props
 }: CustomFormControlProps & CustomInputProps & CustomButtonProps) => {
   return (
-    <FormControl {...props}>
+    <FormControl {...props} mt="5">
       {props.label !== "" && <Label>{props.label}</Label>}
       <Flex>
         <Input {...inputProps} />
@@ -90,7 +90,7 @@ export const FormControlInputInvalid = ({
   const isError = input === "";
 
   return (
-    <FormControl {...props} isInvalid={isError}>
+    <FormControl {...props} isInvalid={isError} mt="5">
       {props.label !== "" && <Label>{props.label}</Label>}
       <Input value={input} onChange={handleInputChange} {...inputProps} />
       {!isError ? (
@@ -111,14 +111,14 @@ export const FormControlInputPassword = ({
   const handleClick = () => setShow(!show);
 
   return (
-    <FormControl {...props}>
+    <FormControl {...props} mt="5">
       {props.label !== "" && <Label>{props.label}</Label>}
       <InputGroup size="md">
         <Input
           type={show ? "text" : "password"}
           placeholder={inputProps.placeholder}
         />
-        <InputRightElement width="4.5rem">
+        <InputRightElement width="4.5rem" pr="0.4rem" justifyContent="flex-end">
           <IconButton
             aria-label={show ? "hide" : "show"}
             h="1.75rem"
