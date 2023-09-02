@@ -224,7 +224,7 @@ const Button = {
   baseStyle,
   variants,
   sizes,
-  defaultProps: defaultProps,
+  defaultProps,
 };
 
 export default Button;
