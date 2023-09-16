@@ -32,4 +32,11 @@ export const spacing = {
   72: '18rem',
   80: '20rem',
   96: '24rem',
+
+  layout: {
+    px: {
+      base: '20px',
+      md: '60px',
+    },
+  },
 };

@@ -11,24 +11,19 @@ export function Header() {
   return (
     <Flex
       w={'100%'}
-      h={'80px'}
+      h={'layout.headerHeight'}
       align={'center'}
       justify={{ base: 'center', md: 'space-between' }}
       pos={'fixed'}
       zIndex={999999}
       bg={'#fff'}
-      px={{ base: '20px', md: '60px' }}>
+      px={{ base: 'layout.px.base', md: 'layout.px.md' }}
+    >
       <LogoLink mb={'6px'} />
       <WebCatrgories />
-      <Hamburger
-        w={'33px'}
-        onOpen={onOpen}
-      />
+      <Hamburger w={'33px'} onOpen={onOpen} />
 
-      <SideDrawerNav
-        isOpen={isOpen}
-        onClose={onClose}
-      />
+      <SideDrawerNav isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 }
