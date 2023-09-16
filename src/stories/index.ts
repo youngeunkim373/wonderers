@@ -1,17 +1,19 @@
-import { button } from "./Button";
-import { label } from "./Label";
-import { input } from "./Input";
-import { pageTitle } from "./PageTitle";
-import { heading } from "./Heading";
-import { formControl } from "./FormControl";
+import { button } from './Button';
+import { link } from './Link';
+import { label } from './Label';
+import { input } from './Input';
+import { pageTitle } from './PageTitle';
+import { heading } from './Heading';
+import { formControl } from './FormControl';
 import {
   FormControlInput,
   FormControlInputWithButton,
   FormControlInputInvalid,
   FormControlInputPassword,
-} from "./FormInput";
+} from './FormInput';
 
 export const Button = button;
+export const Link = link;
 export const Label = label;
 export const Input = input;
 export const PageTitle = pageTitle;
