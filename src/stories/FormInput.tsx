@@ -23,29 +23,12 @@ interface CustomFormControlProps extends FormControlProps {
   children?: React.ReactNode;
   helperText?: string;
   errorMessage?: string;
+  inputProps?: InputProps;
+  buttonProps?: ButtonProps & { children?: React.ReactNode };
 }
 
-interface CustomInputProps extends InputProps {
-  inputProps: {
-    type?: string;
-    value?: string;
-    placeholder?: string;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  };
-}
-
-interface CustomButtonProps extends ButtonProps {
-  buttonProps: {
-    name: string;
-    colorScheme?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  };
-}
-
-export const FormControlInput = ({
-  inputProps,
-  ...props
-}: CustomFormControlProps & CustomInputProps) => {
+export const FormControlInput = ({ ...props }: CustomFormControlProps & InputProps) => {
+  const { inputProps } = props;
   return (
     <FormControl {...props} mt="5">
       {props.label !== '' && <Label>{props.label}</Label>}
@@ -54,34 +37,27 @@ export const FormControlInput = ({
   );
 };
 
-export const FormControlInputWithButton = ({
-  inputProps,
-  buttonProps,
-  ...props
-}: CustomFormControlProps & CustomInputProps & CustomButtonProps) => {
+export const FormControlInputWithButton = ({ ...props }: CustomFormControlProps) => {
+  const { inputProps, buttonProps } = props;
+
   return (
     <FormControl {...props} mt="5">
-      {!props.label && <Label>{props.label}</Label>}
+      {props.label && <Label>{props.label}</Label>}
       <Flex>
         <Input {...inputProps} />
-        <Button
-          ml="2"
-          size="md"
-          // colorScheme={`${!buttonProps.colorScheme && 'pink'}`}
-          colorScheme={buttonProps.colorScheme ?? 'pink'}
-          {...buttonProps}
-        >
-          {buttonProps.name}
-        </Button>
+        {buttonProps && (
+          <Button ml="2" size="md" colorScheme={buttonProps.colorScheme || 'pink'} {...buttonProps}>
+            {buttonProps.children}
+          </Button>
+        )}
       </Flex>
     </FormControl>
   );
 };
 
-export const FormControlInputInvalid = ({
-  inputProps,
-  ...props
-}: CustomFormControlProps & CustomInputProps) => {
+export const FormControlInputInvalid = ({ ...props }: CustomFormControlProps) => {
+  const { inputProps } = props;
+
   const [input, setInput] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -103,10 +79,9 @@ export const FormControlInputInvalid = ({
   );
 };
 
-export const FormControlInputPassword = ({
-  inputProps,
-  ...props
-}: CustomFormControlProps & CustomInputProps) => {
+export const FormControlInputPassword = ({ ...props }: CustomFormControlProps) => {
+  const { inputProps } = props;
+
   const [show, setShow] = useState(false);
 
   const handleClick = () => setShow(!show);
@@ -115,7 +90,9 @@ export const FormControlInputPassword = ({
     <FormControl {...props} mt="5">
       {props.label !== '' && <Label>{props.label}</Label>}
       <InputGroup size="md">
-        <Input type={show ? 'text' : 'password'} placeholder={inputProps.placeholder} />
+        {inputProps && (
+          <Input type={show ? 'text' : 'password'} placeholder={inputProps.placeholder} />
+        )}
         <InputRightElement width="4.5rem" pr="0.4rem" justifyContent="flex-end">
           <IconButton
             aria-label={show ? 'hide' : 'show'}
