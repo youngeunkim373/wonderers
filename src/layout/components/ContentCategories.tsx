@@ -50,12 +50,14 @@ export function WebCatrgories() {
         grow={1}
         gap={'min(10%, 120px)'}
         pl={'min(10%, 120px)'}
-        style={{ width: '100%' }}>
+        style={{ width: '100%' }}
+      >
         {Object.entries(contentCatrgories).map(([key, value]) => (
           <Button
             key={key}
             variant={'unstyled'}
-            onClick={() => handleOpenSubMenu(key as ContentCategoryKey)}>
+            onClick={() => handleOpenSubMenu(key as ContentCategoryKey)}
+          >
             <CustomHeading as={'h5'}>{value.label}</CustomHeading>
           </Button>
         ))}
@@ -97,25 +99,27 @@ export function MobileCatrgories() {
       gap={'15px'}
       bg={'#fff'}
       p={'40px'}
-      style={{ width: '100%' }}>
+      style={{ width: '100%' }}
+    >
       {Object.entries(contentCatrgories).map(([key, value]) => (
-        <Accordion
-          key={key}
-          allowToggle>
+        <Accordion key={key} allowToggle>
           <AccordionItem {...customAccordion.container}>
             {({ isExpanded }) => (
               <>
                 <AccordionButton {...customAccordion.button}>
                   <CustomHeading as={'h5'}>{value.label}</CustomHeading>
-                  {value.children && (isExpanded ? <MinusIcon color={'pink.main'} /> : <AddIcon color={'pink.main'} />)}
+                  {value.children &&
+                    (isExpanded ? (
+                      <MinusIcon color={'pink.main'} />
+                    ) : (
+                      <AddIcon color={'pink.main'} />
+                    ))}
                 </AccordionButton>
 
                 {value.children && (
                   <AccordionPanel>
                     {value.children?.map((detail) => (
-                      <Link
-                        key={detail.key}
-                        href={`/${key}/${detail.key}`}>
+                      <Link key={detail.key} href={`/${key}/${detail.key}`}>
                         <CustomHeading as={'h5'}>{detail.label}</CustomHeading>
                       </Link>
                     ))}
