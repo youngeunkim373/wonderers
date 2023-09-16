@@ -18,7 +18,7 @@ export const pageTitle = ({ ...props }: PageTitleProps) => {
   const { subtitle } = props;
 
   return (
-    <Box textAlign="center" m="0 auto">
+    <Box textAlign="center" m="0 auto 3rem">
       <Heading as="h1" lineHeight="1">
         {props.title}
       </Heading>

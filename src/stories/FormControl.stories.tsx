@@ -18,7 +18,7 @@ export default meta;
 
 export const FormControlStory = () => {
   return (
-    <FormControl label="레이블">
+    <FormControl label="레이블" mt="5">
       <Input type="text" />
     </FormControl>
   );
