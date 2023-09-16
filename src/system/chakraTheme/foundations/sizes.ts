@@ -27,10 +27,19 @@ const container = {
   xl: '1280px',
 };
 
+const layout = {
+  headerHeight: '80px',
+  footerHeight: {
+    base: '132px',
+    md: '90px',
+  },
+};
+
 const sizes = {
   ...spacing,
   ...largeSizes,
   container,
+  layout,
 };
 
 export default sizes;
