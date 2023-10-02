@@ -1,12 +1,10 @@
-import { Flex, useDisclosure } from '@chakra-ui/react';
-
+import { Flex, Hide } from '@chakra-ui/react';
 import { LogoLink } from '../components/common/links/LogoLink';
-import { WebCatrgories } from './components/ContentCategories';
-import { Hamburger } from './components/Hamburger';
-import { SideDrawerNav } from './components/SideDrawerNav';
+import { SideDrawerNavButton } from './components/SideDrawerNavButton';
+import { useLayoutContext } from '@/context/LayoutContext';
 
 export function Header() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { HeaderCategory } = useLayoutContext();
 
   return (
     <Flex
@@ -18,12 +16,15 @@ export function Header() {
       zIndex={999999}
       bg={'#fff'}
       px={{ base: 'layout.px.base', md: 'layout.px.md' }}
+      boxShadow={'lg'}
     >
       <LogoLink mb={'6px'} />
-      <WebCatrgories />
-      <Hamburger w={'33px'} onOpen={onOpen} />
 
-      <SideDrawerNav isOpen={isOpen} onClose={onClose} />
+      <Hide below={'md'}>
+        <HeaderCategory />
+      </Hide>
+
+      <SideDrawerNavButton />
     </Flex>
   );
 }

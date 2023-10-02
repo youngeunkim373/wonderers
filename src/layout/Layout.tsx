@@ -1,6 +1,7 @@
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { LinkProps, Box as Main, useTheme } from '@chakra-ui/react';
+import { LayoutContextProvider } from '@/context/LayoutContext';
 interface Props extends LinkProps {
   children: React.ReactNode;
 }
@@ -9,7 +10,7 @@ export function Layout({ children }: Props) {
   const { sizes } = useTheme();
 
   return (
-    <>
+    <LayoutContextProvider>
       <Header />
       <Main
         bg={'pink'}
@@ -19,6 +20,6 @@ export function Layout({ children }: Props) {
         {children}
       </Main>
       <Footer />
-    </>
+    </LayoutContextProvider>
   );
 }
