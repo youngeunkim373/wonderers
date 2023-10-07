@@ -220,9 +220,11 @@ const defaultProps = {
   colorScheme: "black",
 };
 
-export default {
+const Button = {
   baseStyle,
   variants,
   sizes,
   defaultProps,
 };
+
+export default Button;
