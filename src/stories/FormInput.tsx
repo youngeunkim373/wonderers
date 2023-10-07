@@ -27,12 +27,13 @@ interface CustomFormControlProps extends FormControlProps {
   buttonProps?: ButtonProps & { children?: React.ReactNode };
 }
 
-export const FormControlInput = ({ ...props }: CustomFormControlProps & InputProps) => {
-  const { inputProps } = props;
+export const FormControlInput = (props: CustomFormControlProps) => {
+  // const { inputProps } = props;
   return (
     <FormControl {...props} mt="5">
       {props.label !== '' && <Label>{props.label}</Label>}
-      <Input {...inputProps} />
+      {/* <Input {...props.inputProps} /> */}
+      <Input />
     </FormControl>
   );
 };
@@ -91,7 +92,9 @@ export const FormControlInputPassword = ({ ...props }: CustomFormControlProps) =
       {props.label !== '' && <Label>{props.label}</Label>}
       <InputGroup size="md">
         {inputProps && (
-          <Input type={show ? 'text' : 'password'} placeholder={inputProps.placeholder} />
+          <div>
+            <Input type={show ? 'text' : 'password'} placeholder={inputProps.placeholder} />
+          </div>
         )}
         <InputRightElement width="4.5rem" pr="0.4rem" justifyContent="flex-end">
           <IconButton
