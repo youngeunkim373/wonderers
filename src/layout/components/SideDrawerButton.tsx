@@ -1,6 +1,5 @@
 import { CSSProperties } from 'react';
 import { Heading } from '@/stories';
-import { LogoLink } from '@/components/common/links/LogoLink';
 import { useLayoutContext } from '@/context/LayoutContext';
 import {
   Box as Hambuger,
@@ -45,15 +44,20 @@ export function SideDrawerButton() {
 
         <DrawerContent boxShadow={'xl'} bg={'red'} zIndex={999}>
           <DrawerHeader bg={'gray.50'} p={0}>
-            <Flex justify={'space-between'} align={'center'} p={'40px'}>
-              <LogoLink />
-              <CloseButton style={{ fontSize: '24px' }} onClick={onClose} />
+            <Flex justify={'flex-end'} align={'center'} p={'40px'}>
+              <CloseButton fontSize={'24px'} onClick={onClose} />
             </Flex>
             <Flex justify={'center'} align={'center'} pb={'40px'}>
               <DrawerHeaderLink href={'/profile'} style={headerStyle}>
                 마이페이지
               </DrawerHeaderLink>
-              <Divider h={'20px'} bg={'black.third'} orientation={'vertical'} />
+              <Divider
+                w={'1.2px'}
+                h={'20px'}
+                color={'black.third'}
+                bg={'black.third'}
+                orientation={'vertical'}
+              />
               <DrawerHeaderLink href={'/'} style={headerStyle}>
                 로그아웃
               </DrawerHeaderLink>
