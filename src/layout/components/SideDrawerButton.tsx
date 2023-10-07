@@ -24,7 +24,7 @@ const headerStyle = {
   textAlign: 'center' as const,
 };
 
-export function SideDrawerNavButton() {
+export function SideDrawerButton() {
   const { SiderCategory, sideDrawerDisclosure, handleOpenSideDrawer } = useLayoutContext();
   const { isOpen, onClose } = sideDrawerDisclosure;
 
@@ -43,7 +43,7 @@ export function SideDrawerNavButton() {
       <Drawer placement={'right'} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay bg={'transparent'} p={0} />
 
-        <DrawerContent boxShadow={'xl'}>
+        <DrawerContent boxShadow={'xl'} bg={'red'} zIndex={999}>
           <DrawerHeader bg={'gray.50'} p={0}>
             <Flex justify={'space-between'} align={'center'} p={'40px'}>
               <LogoLink />

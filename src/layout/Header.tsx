@@ -1,6 +1,6 @@
 import { Flex, Hide } from '@chakra-ui/react';
 import { LogoLink } from '../components/common/links/LogoLink';
-import { SideDrawerNavButton } from './components/SideDrawerNavButton';
+import { SideDrawerButton } from './components/SideDrawerButton';
 import { useLayoutContext } from '@/context/LayoutContext';
 
 export function Header() {
@@ -13,7 +13,7 @@ export function Header() {
       align={'center'}
       justify={{ base: 'center', md: 'space-between' }}
       pos={'fixed'}
-      zIndex={999999}
+      zIndex={1}
       bg={'#fff'}
       px={{ base: 'layout.px.base', md: 'layout.px.md' }}
       boxShadow={'lg'}
@@ -24,7 +24,7 @@ export function Header() {
         <HeaderCategory />
       </Hide>
 
-      <SideDrawerNavButton />
+      <SideDrawerButton />
     </Flex>
   );
 }
