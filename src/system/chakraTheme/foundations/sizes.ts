@@ -31,9 +31,9 @@ const layout = {
   headerHeight: '80px',
   footerHeight: {
     base: '132px',
-    md: '90px',
+    md: '81px',
   },
-};
+} as const;
 
 const sizes = {
   ...spacing,

@@ -76,7 +76,7 @@ function useLayout() {
   const HeaderCategory = () => {
     return (
       <>
-        <Flex hideBelow={'md'} grow={1} gap={'min(10%, 120px)'} pl={'min(10%, 120px)'} w={'100%'}>
+        <Flex hideBelow={'md'} grow={1} gap={'min(10%, 120px)'} w={'100%'}>
           {Object.entries(categories).map(([key, value]) => (
             <Button
               key={key}

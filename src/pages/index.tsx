@@ -17,16 +17,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.center}>
-          <Text fontSize="md" mb="50px">
-            Welcome, We are
-          </Text>
-          <Image src="/logo.svg" alt="wonderers-logo" width={400} height={70} priority />
-        </div>
-      </main>
+      <div className={styles.center}>
+        <Text fontSize="md" mb="50px">
+          Welcome, We are
+        </Text>
+        <Image src="/logo.svg" alt="wonderers-logo" width={400} height={70} priority />
+      </div>
     </>
   );
 }
