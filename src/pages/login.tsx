@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Button, FormInputPassword, PageTitle, Link } from '@/stories';
 import { FormControlInput } from '@/stories/FormInput';
+import { mswApiHost } from '@/mocks/apiHost';
+import { useRouter } from 'next/router';
 
 const Login = () => {
+  const router = useRouter();
   const [userId, setUserId] = useState<string | undefined>('');
   const [userPw, setUserPw] = useState<string | undefined>('');
 
@@ -13,8 +16,10 @@ const Login = () => {
     setUserPw(event.target.value);
 
   const handlLogin = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch(`${mswApiHost}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,12 +28,15 @@ const Login = () => {
       });
 
       if (response.ok) {
-        console.log(response.body);
+        const data = await response.json();
+        router.push('/');
+        // + 메인으로 리다이렉션 & 메뉴에서 로그아웃으로 변경
       } else {
-        // 로그인 실패
+        const errorData = await response.json();
+        alert(errorData.error);
       }
     } catch (error) {
-      console.error('API 호출 중 오류 발생:', error);
+      console.error(error);
     }
   };
 

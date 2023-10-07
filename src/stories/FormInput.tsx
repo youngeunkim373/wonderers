@@ -4,6 +4,7 @@ import {
   FormControlProps,
   InputProps,
   ButtonProps,
+  InputGroupProps,
   FormHelperText,
   FormErrorMessage,
   InputGroup,
@@ -24,6 +25,7 @@ interface CustomFormControlProps extends FormControlProps {
   helperText?: string;
   errorMessage?: string;
   inputProps?: InputProps;
+  inputGroupProps?: InputGroupProps;
   buttonProps?: ButtonProps & { children?: React.ReactNode };
 }
 
@@ -32,7 +34,7 @@ export const FormControlInput = (props: CustomFormControlProps) => {
   return (
     <FormControl {...rest} mt="5">
       {props.label !== '' && <Label>{props.label}</Label>}
-      <Input {...props.inputProps} />
+      <Input {...inputProps} />
     </FormControl>
   );
 };
@@ -80,7 +82,7 @@ export const FormControlInputInvalid = (props: CustomFormControlProps) => {
 };
 
 export const FormControlInputPassword = (props: CustomFormControlProps) => {
-  const { inputProps, ...rest } = props;
+  const { inputGroupProps, inputProps, ...rest } = props;
 
   const [show, setShow] = useState(false);
 
@@ -89,9 +91,13 @@ export const FormControlInputPassword = (props: CustomFormControlProps) => {
   return (
     <FormControl {...rest} mt="5">
       {props.label !== '' && <Label>{props.label}</Label>}
-      <InputGroup size="md">
+      <InputGroup size="md" {...inputGroupProps}>
         {inputProps && (
-          <Input type={show ? 'text' : 'password'} placeholder={inputProps.placeholder} />
+          <Input
+            type={show ? 'text' : 'password'}
+            placeholder={inputProps.placeholder}
+            {...inputProps}
+          />
         )}
         <InputRightElement width="4.5rem" pr="0.4rem" justifyContent="flex-end">
           <IconButton
