@@ -1,9 +1,11 @@
 import { Text } from '@/stories/Text';
-import { Grid, GridItem, Show } from '@chakra-ui/react';
+import { Grid, GridItem, Show, useTheme } from '@chakra-ui/react';
 import Logo from '@/assets/img/common/logo/white-logo.svg';
 import WavyLine from '@/assets/img/common/etc/line-wavy.svg';
 
 export function Footer() {
+  const { sizes } = useTheme();
+
   return (
     <Grid
       w={'100%'}
@@ -17,6 +19,8 @@ export function Footer() {
       textAlign={'center'}
       pt={'18px'}
       pb={'15px'}
+      boxSizing={'border-box'}
+      transform={`translateY(${sizes.layout.headerHeight})`}
     >
       <GridItem id={'copyright'} order={{ base: 3, md: 1 }} pr={{ base: 0, md: '200px' }}>
         <Text color={'white'} fontSize={'12px'}>
