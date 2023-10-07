@@ -29,8 +29,9 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        router.push('/');
-        // + 메인으로 리다이렉션 & 메뉴에서 로그아웃으로 변경
+        console.log(data.token);
+        // router.push('/');
+        // + 메뉴에서 로그아웃으로 변경
       } else {
         const errorData = await response.json();
         alert(errorData.error);

@@ -15,4 +15,11 @@ export const mockedUser: any[] = [
     country: 'ko',
     lang: 'react',
   },
+  {
+    id: 'user3',
+    pw: '1234',
+    name: 'kim',
+    country: 'ko',
+    lang: 'react',
+  },
 ];

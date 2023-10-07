@@ -2,6 +2,18 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { mockedUser } from '@/mocks/data/user';
 
 export default function login(req: NextApiRequest, res: NextApiResponse<any>) {
+  const jwt = require('jsonwebtoken');
+
+  // 사용자 정보를 기반으로 토큰 생성
+  const generateToken = (userId: string) => {
+    // 무작위로 생성된 사용자
+    const randomUserId = new Date().getTime().toString();
+
+    const token = jwt.sign({ userId }, randomUserId, { expiresIn: '5s' });
+
+    return token;
+  };
+
   const method: string = req.method!;
 
   switch (method) {
@@ -22,8 +34,9 @@ export default function login(req: NextApiRequest, res: NextApiResponse<any>) {
 
         if (user) {
           if (user.pw === userPw) {
-            // 아이디와 비밀번호가 일치할 경우 여기서 토큰 생성
-            res.status(200).json({ message: '로그인 성공' });
+            // 아이디와 비밀번호 모두 일치할 경우
+            const token = generateToken(userId);
+            res.status(200).json({ message: '로그인 성공', token }); // 토큰 반환
           } else {
             // 아이디는 일치하지만 비밀번호가 일치하지 않을 경우
             res.status(401).json({ error: '비밀번호가 올바르지 않습니다.' });
