@@ -4,8 +4,8 @@ import { Button, FormInputPassword, PageTitle, Link } from '@/stories';
 import { FormControlInput } from '@/stories/FormInput';
 
 const Login = () => {
-  const [userId, setUserId] = useState<string | undefined>(undefined);
-  const [userPw, setUserPw] = useState<string | undefined>(undefined);
+  const [userId, setUserId] = useState<string | undefined>('');
+  const [userPw, setUserPw] = useState<string | undefined>('');
 
   const onChangeUserId = (event: React.ChangeEvent<HTMLInputElement>) =>
     setUserId(event.target.value);
@@ -39,14 +39,14 @@ const Login = () => {
         <form>
           <FormControlInput
             label="아이디"
-            // inputProps={{
-            //   type: 'text',
-            //   placeholder: '아이디',
-            //   value: `${userId}`,
-            //   onChange: onChangeUserId,
-            // }}
+            inputProps={{
+              type: 'text',
+              placeholder: '아이디',
+              value: `${userId}`,
+              onChange: onChangeUserId,
+            }}
           />
-          {/* <FormInputPassword
+          <FormInputPassword
             label="비밀번호"
             inputProps={{
               type: 'password',
@@ -54,7 +54,7 @@ const Login = () => {
               value: `${userPw}`,
               onChange: onChangeUserPw,
             }}
-          /> */}
+          />
           <Button size="lg" w="100%" mt="5" onClick={handlLogin}>
             로그인
           </Button>
