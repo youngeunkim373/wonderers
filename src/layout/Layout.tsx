@@ -14,15 +14,12 @@ export function Layout({ children }: Props) {
     <LayoutContextProvider>
       <Header />
       <Main
-        bg={'pink'}
         w={'100%'}
+        px={{ base: 'layout.px.base', md: 'layout.px.md' }}
         minH={{
           md: `calc(100vh - ${sizes.layout.footerHeight.md} - ${sizes.layout.headerHeight})`,
           base: `calc(100vh - ${sizes.layout.footerHeight.base} - ${sizes.layout.headerHeight})`,
         }}
-        display={'flex'}
-        justifyContent={'center'}
-        alignItems={'center'}
         transform={`translateY(${sizes.layout.headerHeight})`}
       >
         {children}
