@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Button, FormInputPassword, PageTitle, Link } from '@/stories';
 import { FormControlInput } from '@/stories/FormInput';
-import { mswApiHost } from '@/mocks/apiHost';
-import { useRouter } from 'next/router';
+import { useAuthContext } from '@/context/useAuthContext';
 
 const Login = () => {
-  const router = useRouter();
+  const { logIn } = useAuthContext();
+
   const [userId, setUserId] = useState<string | undefined>('');
   const [userPw, setUserPw] = useState<string | undefined>('');
 
@@ -15,30 +15,9 @@ const Login = () => {
   const onChangeUserPw = (event: React.ChangeEvent<HTMLInputElement>) =>
     setUserPw(event.target.value);
 
-  const handlLogin = async (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handlLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-
-    try {
-      const response = await fetch(`${mswApiHost}/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userId, userPw }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data.token);
-        // router.push('/');
-        // + 메뉴에서 로그아웃으로 변경
-      } else {
-        const errorData = await response.json();
-        alert(errorData.error);
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    logIn({ userId, userPw });
   };
 
   return (
