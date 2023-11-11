@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, PropsWithChildren, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { mswApiHost } from '@/mocks/apiHost';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 // @ts-ignore
 const AuthContext = createContext<ReturnType<typeof useAuth>>(null);
@@ -17,6 +17,8 @@ function useAuth() {
       const accessToken = sessionStorage.getItem('accessToken');
       if (accessToken) {
         setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
       }
     }
   }, []);
@@ -30,13 +32,11 @@ function useAuth() {
         sessionStorage.setItem('accessToken', responseData.accessToken);
         setIsLoggedIn(true);
         router.push('/');
-        // console.log(responseData.message);
-        // + 메뉴에서 로그아웃으로 변경
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const errorMessage = error.response?.data.message || '알 수 없는 오류';
-        console.error(errorMessage);
+        const errorMessage = error.response?.data.message || '알 수 없는 오류가 발생했습니다.';
+        // console.error(errorMessage);
         alert(errorMessage);
       }
     }
@@ -54,6 +54,7 @@ function useAuth() {
       // 클라이언트 측에서만 실행되도록 확인
       sessionStorage.removeItem('accessToken');
       setIsLoggedIn(false);
+      router.push('/');
     }
   };
 

@@ -15,7 +15,7 @@ const Login = () => {
   const onChangeUserPw = (event: React.ChangeEvent<HTMLInputElement>) =>
     setUserPw(event.target.value);
 
-  const handlLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     logIn({ userId, userPw });
   };
@@ -37,13 +37,12 @@ const Login = () => {
           <FormInputPassword
             label="비밀번호"
             inputProps={{
-              type: 'password',
               placeholder: '비밀번호',
               value: `${userPw}`,
               onChange: onChangeUserPw,
             }}
           />
-          <Button size="lg" w="100%" mt="5" onClick={handlLogin}>
+          <Button size="lg" w="100%" mt="5" onClick={handleLogin}>
             로그인
           </Button>
         </form>
