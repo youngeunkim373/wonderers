@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, PropsWithChildren, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { mswApiHost } from '@/mocks/apiHost';
 import axios from 'axios';
 
 // @ts-ignore
@@ -12,24 +11,29 @@ function useAuth() {
   const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
 
   useEffect(() => {
-    // 페이지 로드 시 로그인 상태 확인 또는 다른 로그인 상태 초기화 로직 추가
     if (typeof window !== 'undefined') {
       const accessToken = sessionStorage.getItem('accessToken');
       if (accessToken) {
         setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
       }
+
+      const refreshTest = setTimeout(() => {
+        console.log('refreshTest in effect');
+        silentRefresh();
+      }, (10 - 1) * 1000); // 9초마다 silentRefresh 호출
+
+      return () => clearTimeout(refreshTest);
     }
   }, []);
 
   const logIn = async (userData: any) => {
     try {
-      const response = await axios.post(`${mswApiHost}/login`, { userData });
+      const response = await axios.post('http://localhost:7737/api/login', { userData });
 
       if (response.status === 200) {
         const responseData = response.data;
         sessionStorage.setItem('accessToken', responseData.accessToken);
+        sessionStorage.setItem('refreshToken', responseData.refreshToken);
         setIsLoggedIn(true);
         router.push('/');
       }
@@ -42,17 +46,50 @@ function useAuth() {
     }
   };
 
-  const silentRefresh = () => {
-    if (typeof window !== 'undefined') {
-      // 클라이언트 측에서만 실행되도록 확인
-      // const storedRefreshToken = sessionStorage.getItem('refreshToken');
+  const extendSession = (data: any) => {
+    const { accessToken, refreshToken } = data;
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    sessionStorage.setItem('accessToken', accessToken);
+    sessionStorage.setItem('refreshToken', refreshToken);
+
+    setIsLoggedIn(true);
+
+    // setTimeout(silentRefresh, (1800 - 30) * 1000);
+    setTimeout(silentRefresh, 8000);
+  };
+
+  const silentRefresh = async () => {
+    try {
+      if (typeof window !== 'undefined') {
+        const storedRefreshToken = sessionStorage.getItem('refreshToken');
+
+        const response = await axios.post('http://localhost:7737/api/refresh', {
+          refreshToken: storedRefreshToken,
+        });
+
+        const responseData = response.data;
+        console.log('newAccessToken: ', responseData.accessToken);
+
+        extendSession(responseData);
+      }
+    } catch (error) {
+      console.error('Silent refresh 실패:', error);
+
+      if (axios.isAxiosError(error) && error.response?.status === 401) {
+        logOut();
+      }
     }
   };
 
   const logOut = () => {
     if (typeof window !== 'undefined') {
       // 클라이언트 측에서만 실행되도록 확인
+      axios.defaults.headers.common['Authorization'] = null;
+
       sessionStorage.removeItem('accessToken');
+      sessionStorage.removeItem('refreshToken');
+
       setIsLoggedIn(false);
       router.push('/');
     }
