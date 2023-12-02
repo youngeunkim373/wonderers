@@ -16,13 +16,6 @@ function useAuth() {
       if (accessToken) {
         setIsLoggedIn(true);
       }
-
-      const refreshTest = setTimeout(() => {
-        console.log('refreshTest in effect');
-        silentRefresh();
-      }, (10 - 1) * 1000); // 9초마다 silentRefresh 호출
-
-      return () => clearTimeout(refreshTest);
     }
   }, []);
 
@@ -40,8 +33,7 @@ function useAuth() {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorMessage = error.response?.data.message || '알 수 없는 오류가 발생했습니다.';
-        // console.error(errorMessage);
-        alert(errorMessage);
+        console.error(errorMessage);
       }
     }
   };
@@ -55,8 +47,8 @@ function useAuth() {
 
     setIsLoggedIn(true);
 
-    // setTimeout(silentRefresh, (1800 - 30) * 1000);
-    setTimeout(silentRefresh, 8000);
+    setTimeout(silentRefresh, 58 * 1000); // 테스트용 58초
+    // setTimeout(silentRefresh, (1800 - 30) * 1000); // 29.5분
   };
 
   const silentRefresh = async () => {
