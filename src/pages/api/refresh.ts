@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 // import { JsonWebTokenError } from 'jsonwebtoken';
 import { verifyRefreshToken, generateAccessToken } from '@/utils/auth';
-import { dataUser } from '@/data/user';
+import { dataUser } from '../../../public/data/user';
 
 export default function refresh(req: NextApiRequest, res: NextApiResponse<any>) {
   const method: string = req.method!;

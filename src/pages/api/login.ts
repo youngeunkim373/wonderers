@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { dataUser } from '@/data/user';
+import { dataUser } from '../../../public/data/user';
 import { generateAccessToken, generateRefreshToken } from '@/utils/auth';
 
 export default function login(req: NextApiRequest, res: NextApiResponse<any>) {
