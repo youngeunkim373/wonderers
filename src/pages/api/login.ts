@@ -26,8 +26,8 @@ export default function login(req: NextApiRequest, res: NextApiResponse<any>) {
 
           if (user.pw === userPw) {
             // 아이디와 비밀번호 모두 일치할 경우
-            const accessToken = generateAccessToken(userId, '1m'); // 테스트용
-            // const accessToken = generateAccessToken(userId, '30m');
+            // const accessToken = generateAccessToken(userId, '1m'); // 테스트용
+            const accessToken = generateAccessToken(userId, '30m');
             const refreshToken = generateRefreshToken(userId, '1d');
 
             dataUser[userIndex] = {

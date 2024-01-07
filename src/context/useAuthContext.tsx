@@ -47,8 +47,8 @@ function useAuth() {
 
     setIsLoggedIn(true);
 
-    setTimeout(silentRefresh, 58 * 1000); // 테스트용 58초
-    // setTimeout(silentRefresh, (1800 - 30) * 1000); // 29.5분
+    // setTimeout(silentRefresh, 58 * 1000); // 테스트용 58초
+    setTimeout(silentRefresh, (1800 - 30) * 1000); // 29.5분
   };
 
   const silentRefresh = async () => {

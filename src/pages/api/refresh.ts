@@ -18,8 +18,8 @@ export default function refresh(req: NextApiRequest, res: NextApiResponse<any>) 
 
         if (userIndex !== -1) {
           // 새로운 액세스 토큰 생성
-          const accessToken = generateAccessToken(userId, '1m'); // 테스트용
-          // const accessToken = generateAccessToken(userId, '30m');
+          // const accessToken = generateAccessToken(userId, '1m'); // 테스트용
+          const accessToken = generateAccessToken(userId, '30m');
 
           res.status(200).json({ message: 'accessToken 갱신 성공', accessToken, refreshToken });
         } else {
