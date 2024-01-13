@@ -1,25 +1,35 @@
 const USER_DATA = 'USER';
 
-export const dataUser: any[] = [
+export type CountryType = 'ko' | 'en';
+
+interface User {
+  id: string;
+  pw: string;
+  name: string;
+  country: CountryType;
+  refreshToken: string | null;
+}
+
+export const dataUser: User[] = [
   {
-    id: 'user1',
+    id: 'user1@gmail.com',
     pw: '1234',
     name: 'lee',
     country: 'ko',
-    lang: 'react',
+    refreshToken: null,
   },
   {
-    id: 'user2',
+    id: 'user2@gmail.com',
     pw: '1234',
     name: 'choi',
     country: 'ko',
-    lang: 'react',
+    refreshToken: null,
   },
   {
-    id: 'user3',
+    id: 'user3@gmail.com',
     pw: '1234',
     name: 'kim',
     country: 'ko',
-    lang: 'react',
+    refreshToken: null,
   },
 ];

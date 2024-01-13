@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, PropsWithChildren, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { ExtendSessionData, LoginBodyDTO } from '@/domain/service/auth/auth.interface';
 
 // @ts-ignore
 const AuthContext = createContext<ReturnType<typeof useAuth>>(null);
@@ -12,38 +13,36 @@ function useAuth() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const accessToken = sessionStorage.getItem('accessToken');
-      if (accessToken) {
-        setIsLoggedIn(true);
-      }
+      const accessToken = localStorage.getItem('accessToken');
+      if (accessToken) silentRefresh();
     }
   }, []);
 
-  const logIn = async (userData: any) => {
+  const logIn = async (body: LoginBodyDTO) => {
     try {
-      const response = await axios.post('http://localhost:7737/api/login', { userData });
+      const response = await axios.post('http://localhost:7737/api/login', body);
 
       if (response.status === 200) {
-        const responseData = response.data;
-        sessionStorage.setItem('accessToken', responseData.accessToken);
-        sessionStorage.setItem('refreshToken', responseData.refreshToken);
-        setIsLoggedIn(true);
+        const { accessToken, refreshToken } = response.data;
+
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
+        extendSession({ accessToken, refreshToken });
         router.push('/');
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorMessage = error.response?.data.message || '알 수 없는 오류가 발생했습니다.';
-        console.error(errorMessage);
       }
     }
   };
 
-  const extendSession = (data: any) => {
+  const extendSession = (data: ExtendSessionData) => {
     const { accessToken, refreshToken } = data;
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-    sessionStorage.setItem('accessToken', accessToken);
-    sessionStorage.setItem('refreshToken', refreshToken);
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
 
     setIsLoggedIn(true);
 
@@ -54,22 +53,21 @@ function useAuth() {
   const silentRefresh = async () => {
     try {
       if (typeof window !== 'undefined') {
-        const storedRefreshToken = sessionStorage.getItem('refreshToken');
+        const storedRefreshToken = localStorage.getItem('refreshToken');
 
         const response = await axios.post('http://localhost:7737/api/refresh', {
           refreshToken: storedRefreshToken,
         });
 
         const responseData = response.data;
-        console.log('newAccessToken: ', responseData.accessToken);
-
         extendSession(responseData);
       }
     } catch (error) {
-      console.error('Silent refresh 실패:', error);
-
-      if (axios.isAxiosError(error) && error.response?.status === 401) {
+      const isAxiosError = axios.isAxiosError(error);
+      if (isAxiosError && (error.response?.status === 403 || error.response?.status === 401)) {
+        // todo: 스낵바 UI 붙이기(포탈)
         logOut();
+        router.push('/');
       }
     }
   };
@@ -79,8 +77,8 @@ function useAuth() {
       // 클라이언트 측에서만 실행되도록 확인
       axios.defaults.headers.common['Authorization'] = null;
 
-      sessionStorage.removeItem('accessToken');
-      sessionStorage.removeItem('refreshToken');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
 
       setIsLoggedIn(false);
       router.push('/');

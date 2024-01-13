@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const accessToken =
-  sessionStorage.getItem('accessToken') && `Bearer ${sessionStorage.getItem('accessToken')}`;
+  localStorage.getItem('accessToken') && `Bearer ${localStorage.getItem('accessToken')}`;
 
 export const api = axios.create({
   // baseURL: baseUrl,
@@ -11,7 +11,7 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const token = sessionStorage.getItem('accessToken');
+  const token = localStorage.getItem('accessToken');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }

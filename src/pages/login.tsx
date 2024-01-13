@@ -7,8 +7,8 @@ import { useAuthContext } from '@/context/useAuthContext';
 const Login = () => {
   const { logIn } = useAuthContext();
 
-  const [userId, setUserId] = useState<string | undefined>('');
-  const [userPw, setUserPw] = useState<string | undefined>('');
+  const [userId, setUserId] = useState<string>('');
+  const [userPw, setUserPw] = useState<string>('');
 
   const onChangeUserId = (event: React.ChangeEvent<HTMLInputElement>) =>
     setUserId(event.target.value);
@@ -17,7 +17,7 @@ const Login = () => {
 
   const handleLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    logIn({ userId, userPw });
+    logIn({ id: userId, pw: userPw });
   };
 
   return (
