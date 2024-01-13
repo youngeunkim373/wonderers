@@ -1,57 +1,57 @@
-import { Box, Link } from '@chakra-ui/react';
-import { Button, FormInput, FormInputPassword, PageTitle } from '@/stories';
-import { Flex, Text } from '@chakra-ui/react';
 import { useState } from 'react';
+import { Box, Flex } from '@chakra-ui/react';
+import { Button, FormInputPassword, PageTitle, Link } from '@/stories';
+import { FormControlInput } from '@/stories/FormInput';
+import { useAuthContext } from '@/context/useAuthContext';
 
 const Login = () => {
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
+  const { logIn } = useAuthContext();
 
-  const onIdHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setId(event.target.value);
-  };
+  const [userId, setUserId] = useState<string>('');
+  const [userPw, setUserPw] = useState<string>('');
 
-  const onPwHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPw(event.target.value);
-  };
+  const onChangeUserId = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setUserId(event.target.value);
+  const onChangeUserPw = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setUserPw(event.target.value);
 
-  const onLoginHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(id + pw);
-
+  const handleLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    logIn({ id: userId, pw: userPw });
   };
 
   return (
     <Box p="10">
       <PageTitle title="로그인" />
       <Box w="50%" mx="auto">
-        <FormInput
-          label="아이디"
-          inputProps={{
-            type: 'text',
-            placeholder: '아이디',
-            value: `${id}`,
-            onChange: onIdHandler,
-          }}
-        />
-        <FormInputPassword
-          label="비밀번호"
-          inputProps={{
-            type: 'password',
-            placeholder: '비밀번호',
-            value: `${pw}`,
-            onChange: onPwHandler,
-          }}
-        />
-        <Button size="lg" w="100%" mt="5" onClick={onLoginHandler}>
-          로그인
-        </Button>
+        <form>
+          <FormControlInput
+            label="아이디"
+            inputProps={{
+              type: 'text',
+              placeholder: '아이디',
+              value: `${userId}`,
+              onChange: onChangeUserId,
+            }}
+          />
+          <FormInputPassword
+            label="비밀번호"
+            inputProps={{
+              placeholder: '비밀번호',
+              value: `${userPw}`,
+              onChange: onChangeUserPw,
+            }}
+          />
+          <Button size="lg" w="100%" mt="5" onClick={handleLogin}>
+            로그인
+          </Button>
+        </form>
 
-        <Link href="/join">
-          <Text mt="10" align="right" color="pink.main">
+        <Flex mt="5" justify="flex-end">
+          <Link href="/join" colorScheme="pink" size="lg">
             회원가입
-          </Text>
-        </Link>
+          </Link>
+        </Flex>
       </Box>
     </Box>
   );

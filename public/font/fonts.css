@@ -10,42 +10,49 @@
 @font-face {
   font-family: 'ibm-EL';
   src: url('/font/IBMPlexSansKR-ExtraLight.woff') format('woff');
+  src: url('/font/IBMPlexSansKR-ExtraLight.ttf') format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'ibm-L';
   src: url('/font/IBMPlexSansKR-Light.woff') format('woff');
+  src: url('/font/IBMPlexSansKR-Light.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'ibm-M';
   src: url('/font/IBMPlexSansKR-Medium.woff') format('woff');
+  src: url('/font/IBMPlexSansKR-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'ibm-R';
   src: url('/font/IBMPlexSansKR-Regular.woff') format('woff');
+  src: url('/font/IBMPlexSansKR-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'ibm-SB';
   src: url('/font/IBMPlexSansKR-SemiBold.woff') format('woff');
+  src: url('/font/IBMPlexSansKR-SemiBold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'ibm-B';
   src: url('/font/IBMPlexSansKR-Bold.woff') format('woff');
+  src: url('/font/IBMPlexSansKR-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'ibm-T';
   src: url('/font/IBMPlexSansKR-Text.woff') format('woff');
+  src: url('/font/IBMPlexSansKR-Text.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

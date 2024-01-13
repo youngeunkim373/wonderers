@@ -13,8 +13,10 @@ import {
   Flex,
   Link,
   LinkProps,
+  Button,
 } from '@chakra-ui/react';
 import HamburgerImg from '@/assets/img/common/buttons/btn-hamburger.svg';
+import { useAuthContext } from '@/context/useAuthContext';
 
 const headerStyle = {
   width: '50%',
@@ -24,8 +26,18 @@ const headerStyle = {
 };
 
 export function SideDrawerButton() {
+  const { isLoggedIn, logOut } = useAuthContext();
   const { SiderCategory, sideDrawerDisclosure, handleOpenSideDrawer } = useLayoutContext();
   const { isOpen, onClose } = sideDrawerDisclosure;
+
+  const handleLogout = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    const confirmed = window.confirm('로그아웃 하시겠습니까?');
+
+    if (confirmed) {
+      logOut();
+    }
+  };
 
   return (
     <>
@@ -48,9 +60,15 @@ export function SideDrawerButton() {
               <CloseButton fontSize={'24px'} onClick={onClose} />
             </Flex>
             <Flex justify={'center'} align={'center'} pb={'40px'}>
-              <DrawerHeaderLink href={'/profile'} style={headerStyle}>
-                마이페이지
-              </DrawerHeaderLink>
+              {isLoggedIn ? (
+                <DrawerHeaderLink href={'/profile'} style={headerStyle}>
+                  마이페이지
+                </DrawerHeaderLink>
+              ) : (
+                <DrawerHeaderLink href={'/join'} style={headerStyle}>
+                  회원가입
+                </DrawerHeaderLink>
+              )}
               <Divider
                 w={'1.2px'}
                 h={'20px'}
@@ -58,9 +76,15 @@ export function SideDrawerButton() {
                 bg={'black.third'}
                 orientation={'vertical'}
               />
-              <DrawerHeaderLink href={'/'} style={headerStyle}>
-                로그아웃
-              </DrawerHeaderLink>
+              {isLoggedIn ? (
+                <Button variant="link" style={headerStyle} onClick={handleLogout}>
+                  로그아웃
+                </Button>
+              ) : (
+                <DrawerHeaderLink href={'/login'} style={headerStyle}>
+                  로그인
+                </DrawerHeaderLink>
+              )}
             </Flex>
           </DrawerHeader>
 
@@ -94,3 +118,6 @@ const DrawerHeaderLink = ({ style, children, ...props }: Props) => (
     {children}
   </Link>
 );
+function logOut() {
+  throw new Error('Function not implemented.');
+}

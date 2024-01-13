@@ -4,6 +4,7 @@ import {
   FormControlProps,
   InputProps,
   ButtonProps,
+  InputGroupProps,
   FormHelperText,
   FormErrorMessage,
   InputGroup,
@@ -24,24 +25,25 @@ interface CustomFormControlProps extends FormControlProps {
   helperText?: string;
   errorMessage?: string;
   inputProps?: InputProps;
+  inputGroupProps?: InputGroupProps;
   buttonProps?: ButtonProps & { children?: React.ReactNode };
 }
 
-export const FormControlInput = ({ ...props }: CustomFormControlProps & InputProps) => {
-  const { inputProps } = props;
+export const FormControlInput = (props: CustomFormControlProps) => {
+  const { inputProps, ...rest } = props;
   return (
-    <FormControl {...props} mt="5">
+    <FormControl {...rest} mt="5">
       {props.label !== '' && <Label>{props.label}</Label>}
       <Input {...inputProps} />
     </FormControl>
   );
 };
 
-export const FormControlInputWithButton = ({ ...props }: CustomFormControlProps) => {
-  const { inputProps, buttonProps } = props;
+export const FormControlInputWithButton = (props: CustomFormControlProps) => {
+  const { inputProps, buttonProps, ...rest } = props;
 
   return (
-    <FormControl {...props} mt="5">
+    <FormControl {...rest} mt="5">
       {props.label && <Label>{props.label}</Label>}
       <Flex>
         <Input {...inputProps} />
@@ -55,8 +57,8 @@ export const FormControlInputWithButton = ({ ...props }: CustomFormControlProps)
   );
 };
 
-export const FormControlInputInvalid = ({ ...props }: CustomFormControlProps) => {
-  const { inputProps } = props;
+export const FormControlInputInvalid = (props: CustomFormControlProps) => {
+  const { inputProps, ...rest } = props;
 
   const [input, setInput] = useState('');
 
@@ -67,7 +69,7 @@ export const FormControlInputInvalid = ({ ...props }: CustomFormControlProps) =>
   const isError = input === '';
 
   return (
-    <FormControl {...props} isInvalid={isError} mt="5">
+    <FormControl {...rest} isInvalid={isError} mt="5">
       {props.label !== '' && <Label>{props.label}</Label>}
       <Input value={input} onChange={handleInputChange} {...inputProps} />
       {!isError ? (
@@ -79,19 +81,23 @@ export const FormControlInputInvalid = ({ ...props }: CustomFormControlProps) =>
   );
 };
 
-export const FormControlInputPassword = ({ ...props }: CustomFormControlProps) => {
-  const { inputProps } = props;
+export const FormControlInputPassword = (props: CustomFormControlProps) => {
+  const { inputGroupProps, inputProps, ...rest } = props;
 
   const [show, setShow] = useState(false);
 
   const handleClick = () => setShow(!show);
 
   return (
-    <FormControl {...props} mt="5">
+    <FormControl {...rest} mt="5">
       {props.label !== '' && <Label>{props.label}</Label>}
-      <InputGroup size="md">
+      <InputGroup size="md" {...inputGroupProps}>
         {inputProps && (
-          <Input type={show ? 'text' : 'password'} placeholder={inputProps.placeholder} />
+          <Input
+            type={show ? 'text' : 'password'}
+            placeholder={inputProps.placeholder}
+            {...inputProps}
+          />
         )}
         <InputRightElement width="4.5rem" pr="0.4rem" justifyContent="flex-end">
           <IconButton

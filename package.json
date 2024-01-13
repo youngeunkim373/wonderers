@@ -24,6 +24,7 @@
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
     "framer-motion": "^10.12.4",
+    "jsonwebtoken": "^9.0.2",
     "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -38,6 +39,7 @@
     "@storybook/nextjs": "^7.0.20",
     "@storybook/react": "^7.0.20",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@types/jsonwebtoken": "^9.0.5",
     "eslint-plugin-storybook": "^0.6.12",
     "msw": "^1.2.1",
     "storybook": "^7.0.20"

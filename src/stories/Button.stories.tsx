@@ -1,27 +1,27 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from ".";
-import { Flex } from "@chakra-ui/react";
+import { Button } from '.';
+import { Flex } from '@chakra-ui/react';
 
 const meta: Meta<typeof Button> = {
-  title: "Example/Button",
+  title: 'Example/Button',
   component: Button,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     size: {
       table: {
-        defaultValue: { summary: "md" },
+        defaultValue: { summary: 'md' },
       },
     },
     colorScheme: {
       table: {
-        defaultValue: { summary: "black" },
+        defaultValue: { summary: 'black' },
       },
     },
     variant: {
       // description: "필요할 경우에만 사용",
       table: {
-        defaultValue: { summary: "solid" },
+        defaultValue: { summary: 'solid' },
       },
     },
   },
@@ -33,7 +33,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: Story = {
   args: {
-    children: "Default Button",
+    children: 'Default Button',
   },
 };
 
@@ -62,8 +62,8 @@ export const Variant: Story = {
     <Flex columnGap="5">
       <Button variant="solid">variant: solid</Button>
       <Button variant="outline">variant: outline</Button>
-      <Button variant="ghost">colorScheme: ghost</Button>
-      <Button variant="link">colorScheme: link</Button>
+      <Button variant="ghost">variant: ghost</Button>
+      <Button variant="link">variant: link</Button>
     </Flex>
   ),
 };

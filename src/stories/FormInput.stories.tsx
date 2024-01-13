@@ -6,12 +6,12 @@ const meta: Meta<typeof FormInput> = {
   component: FormInput,
   tags: ['autodocs'],
   argTypes: {
-    isRequired: {
-      options: ['true', 'false'],
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
+    // isRequired: {
+    //   options: ['true', 'false'],
+    //   table: {
+    //     defaultValue: { summary: 'false' },
+    //   },
+    // },
   },
 };
 export default meta;
